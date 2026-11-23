@@ -140,9 +140,20 @@
     }
     .seat-overview-box li { font-size: 14px; color: var(--ink-secondary); }
 
-    .callout { background: var(--bg-subtle); border-left: 3px solid var(--csg-royal); padding: 14px 18px; margin: 16px 0; font-size: 14px; color: var(--ink-secondary); }
+    .callout { background: var(--bg-subtle); border-left: 3px solid var(--csg-royal); padding: 14px 18px; margin: 14px 0; font-size: 14px; color: var(--ink-secondary); }
     .callout.warn { background: var(--warn-bg); border-left-color: var(--csg-gold); color: var(--warn-ink); }
     .callout strong { color: var(--ink-primary); }
+
+    /* Troubleshooting Strip inside Cards */
+    .troubleshoot-tip {
+      background: var(--warn-bg);
+      border-left: 3px solid var(--csg-gold);
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-size: 13.5px;
+      color: var(--warn-ink);
+    }
+    .troubleshoot-tip strong { color: var(--ink-primary); }
 
     /* Tables */
     .table-wrap { overflow-x: auto; border: 1px solid var(--border-light); margin: 14px 0; }
@@ -444,17 +455,17 @@
               <tr>
                 <td><strong>Marketing Hub Professional</strong></td>
                 <td>3 Core Seats + 2,000 Marketing Contacts</td>
-                <td>Build website forms, automated emails, campaigns, LinkedIn scheduling, SEO/AEO, and contact lists (Clients vs. Alumni).</td>
+                <td>Full Smart CRM edit access + website forms, automated emails, campaigns, LinkedIn scheduling, SEO/AEO, and contact lists.</td>
               </tr>
               <tr>
                 <td><strong>Sales Hub Professional</strong></td>
                 <td>Sales Seats (BD &amp; Sales Leads)</td>
-                <td>Manage deal pipelines, stage gates, calendar booking links, proposal/PDF tracking, and outbound email sequences.</td>
+                <td>Full Smart CRM edit access + deal pipelines, stage gates, calendar booking links, proposal/PDF tracking, and outbound email sequences.</td>
               </tr>
               <tr>
                 <td><strong>Service Hub Professional</strong></td>
                 <td>1 Service Seat (Team Customer Success Lead + Operations Director)</td>
-                <td>Maintain past &amp; active client/project records, send automated NPS/CSAT surveys, import historical survey CSVs, run client outreach via Help Desk, and report client health.</td>
+                <td>Full Smart CRM edit access + past/active client &amp; project tracking, automated NPS/CSAT surveys, Help Desk outreach, and satisfaction reporting.</td>
               </tr>
               <tr>
                 <td><strong>Free View-Only / Core Access</strong></td>
@@ -463,6 +474,10 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="callout">
+          <strong>Seat vs. Permission Rule (If a Button Is Greyed Out):</strong>
+          Every paid Pro seat (<em>Marketing Core</em>, <em>Sales Pro</em>, and <em>Service Pro</em>) already includes full <strong>Smart CRM</strong> edit access (Contacts, Companies, Deals). If you have a paid seat and still cannot create properties, edit records, or publish tools, <strong>you do NOT need another seat</strong>—ask your HubSpot Super-Admin to enable the missing permission under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.
         </div>
         <div class="callout warn">
           <strong>Important Limit — 2,000 Marketing Contacts:</strong> Never mark student applicants or inactive alumni as <em>Marketing Contacts</em>. Keep them as <em>Non-Marketing Contacts</em> (<code class="ui-path">Actions &gt; Set as non-marketing contacts</code>) so CSG never pays extra fees.
@@ -560,6 +575,9 @@
             <li>Attach your campaign assets (forms, emails, LinkedIn posts) using the <strong>Add assets</strong> button.</li>
             <li>Review influenced contacts and new deals directly inside the campaign dashboard.</li>
           </ol>
+          <div class="troubleshoot-tip">
+            <strong>If blocked or missing:</strong> Requires one of CSG's 3 <strong>Marketing Core Seats</strong>. If <em>Create campaign</em> is greyed out, ask your Super-Admin to enable <strong>Campaigns &amp; Marketing Edit permissions</strong> under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.
+          </div>
           <div class="links-strip">
             <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
             <ul>
@@ -587,6 +605,9 @@
             <li><strong>Build Email:</strong> Go to <code class="ui-path">Marketing &gt; Email &gt; Create email</code> (choose <em>Automated</em> if triggered by a form) and add your copy + Capabilities PDF link.</li>
             <li><strong>Connect Automation:</strong> Go to <code class="ui-path">Automations &gt; Workflows</code> &rarr; set trigger <em>Form submission = Website Inquiry</em> &rarr; action <em>Send email</em> + <em>Notify BD Lead</em>.</li>
           </ol>
+          <div class="troubleshoot-tip">
+            <strong>If blocked or missing:</strong> If <em>Workflows</em> or <em>Publish</em> is locked, you do not need another seat—ask your Super-Admin to enable <strong>Forms, Marketing Email, and Workflow Edit permissions</strong> under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.
+          </div>
           <div class="links-strip">
             <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
             <ul>
@@ -615,6 +636,9 @@
             <li>Filter by <code class="ui-path">Contact Type is any of CSG Alumni</code> (or <em>Prospective Client / Past Client</em>).</li>
             <li>For student applicants or non-emailed contacts, select them in <code class="ui-path">CRM &gt; Contacts</code> and click <code class="ui-path">More &gt; Set as non-marketing contacts</code>.</li>
           </ol>
+          <div class="troubleshoot-tip">
+            <strong>If blocked or missing:</strong> If <code class="ui-path">Set as non-marketing contacts</code> or <em>Create list</em> is greyed out, ask your Super-Admin to enable <strong>List Edit</strong> and <strong>Marketing Contact management permissions</strong> under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.
+          </div>
           <div class="links-strip">
             <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
             <ul>
@@ -641,6 +665,9 @@
             <li><strong>Social:</strong> Go to <code class="ui-path">Marketing &gt; Social &gt; Create social post</code>, select CSG LinkedIn, write copy, and schedule.</li>
             <li><strong>SEO &amp; AEO:</strong> Go to <code class="ui-path">Content &gt; SEO</code> (or <em>AEO</em>) to review site audit recommendations and target consulting keywords.</li>
           </ol>
+          <div class="troubleshoot-tip">
+            <strong>If blocked or missing:</strong> If CSG's LinkedIn account does not appear, ask a Super-Admin (who also has admin access to the CSG LinkedIn page) to connect it once under <code class="ui-path">Settings &gt; Marketing &gt; Social</code>.
+          </div>
           <div class="links-strip">
             <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
             <ul>
@@ -704,6 +731,9 @@
             <li>Name it <code class="ui-path">[Company Name] – [Semester/Scope]</code>, select the CSG Pipeline, enter the deal amount, and set the expected close date.</li>
             <li>Link the <strong>Company</strong> and decision-maker <strong>Contact</strong> under Associations, then drag the deal card across stages as it progresses.</li>
           </ol>
+          <div class="troubleshoot-tip">
+            <strong>If blocked or missing:</strong> Works with any paid Pro seat (<em>Sales Pro</em>, <em>Marketing Core</em>, or <em>Service Pro</em>). If <em>Create deal</em> is greyed out, ask your Super-Admin to change your <strong>CRM Deal &amp; Company permissions</strong> from <em>View-Only</em> to <em>Edit</em> under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.
+          </div>
           <div class="links-strip">
             <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
             <ul>
@@ -731,6 +761,9 @@
             <li>Set duration to <strong>20 or 30 minutes</strong>, connect Zoom/Teams, and set your available weekly hours.</li>
             <li>Copy your booking link and paste it into email signatures, outreach emails, and the website chatflow.</li>
           </ol>
+          <div class="troubleshoot-tip">
+            <strong>If blocked or missing:</strong> Make sure you have connected your personal Outlook/Google calendar under <code class="ui-path">Settings &gt; General &gt; Calendar</code> first; without a synced calendar, HubSpot cannot generate availability slots.
+          </div>
           <div class="links-strip">
             <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
             <ul>
@@ -757,6 +790,9 @@
             <li>Click <strong>Share</strong> to generate a trackable link (require email address so you know who viewed it).</li>
             <li>Follow up within 24 hours of receiving an open notification.</li>
           </ol>
+          <div class="troubleshoot-tip">
+            <strong>If blocked or missing:</strong> Included in your <strong>Sales Hub Pro Seat</strong>. If <em>Upload document</em> is disabled, ask your Super-Admin to enable <strong>Sales Tools / Library permissions</strong> under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.
+          </div>
           <div class="links-strip">
             <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
             <ul>
@@ -783,6 +819,9 @@
             <li>Add 3–4 short, personalized email steps spaced 3 business days apart + a LinkedIn/call task reminder.</li>
             <li>Open any Contact record and click <strong>Enroll in sequence</strong>.</li>
           </ol>
+          <div class="troubleshoot-tip">
+            <strong>If blocked or missing:</strong> Sequences strictly require a <strong>Sales Hub Pro Seat</strong> (not included in Marketing Core or Service Pro seats) AND a connected personal email inbox under <code class="ui-path">Settings &gt; General &gt; Email</code>.
+          </div>
           <div class="links-strip">
             <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
             <ul>
@@ -844,7 +883,7 @@
         </div>
       </div>
 
-      <!-- NEW OVERVIEW TABLE: STARTING FROM ZERO -->
+      <!-- OVERVIEW TABLE: STARTING FROM ZERO -->
       <div class="part-block">
         <div class="part-heading">
           <h3>Service Area Overview: <span class="blue">What Each Function Does for CSG</span></h3>
@@ -948,6 +987,9 @@
               <li>Review <code class="ui-path">CRM &gt; Companies</code> with the Operations Director to verify every past/active client has linked Contacts (<code class="ui-path">Contact Type = Past Client</code> or <code class="ui-path">Active Client</code>) and past project Deals.</li>
               <li>Update the client's <strong>Health Score</strong>, write a 3-bullet status summary in <strong>Notes</strong>, and click <strong>Pin</strong> so incoming teams see it immediately.</li>
             </ol>
+            <div class="troubleshoot-tip">
+              <strong>If blocked or missing:</strong> Your <strong>Service Hub Pro Seat</strong> already includes full CRM access—you do <strong>not</strong> need a Sales Seat or extra Core Seat. If <code class="ui-path">Settings &gt; Properties</code> or editing Companies/Deals is greyed out, ask your Super-Admin to enable <strong>Edit property settings</strong> and <strong>CRM Edit permissions (Companies &amp; Deals)</strong> under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.
+            </div>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
               <ul>
@@ -985,6 +1027,9 @@
               <li>Share the survey link after final client presentations or verify that the automated post-project email triggered.</li>
               <li>For past surveys, save your spreadsheet as <strong>.csv (UTF-8)</strong> with an <code>Email</code> column and upload via <code class="ui-path">CRM &gt; Contacts &gt; Import</code>.</li>
             </ol>
+            <div class="troubleshoot-tip">
+              <strong>If blocked or missing:</strong> Creating surveys requires your <strong>Service Hub Pro Seat</strong>. If <code class="ui-path">Import</code> is greyed out, ask your Super-Admin to enable <strong>CRM Import permissions</strong> under <code class="ui-path">Settings &gt; Users &amp; Teams</code>. <em>(Tip: Imported CSV scores appear on Contact records/Custom Reports rather than HubSpot's native survey chart.)</em>
+            </div>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
               <ul>
@@ -1022,6 +1067,9 @@
               <li>Open <code class="ui-path">Service &gt; Help Desk</code>, click <strong>Create ticket</strong> (e.g., <em>Past Client Check-In &amp; Testimonial</em>), assign yourself as <strong>Ticket Owner</strong>, and link the <strong>Company</strong> &amp; <strong>Contact</strong>.</li>
               <li>Send outreach emails directly from the ticket so replies stay visible to future cohorts, and use the yellow <strong>Comment</strong> tab with <code>@Name</code> to tag the Operations Director.</li>
             </ol>
+            <div class="troubleshoot-tip">
+              <strong>If blocked or missing:</strong> Requires your <strong>Service Hub Pro Seat</strong>. If connecting the shared team email fails or you cannot reply from tickets, ask a <strong>Super-Admin</strong> to connect the team inbox under <code class="ui-path">Settings &gt; Inbox &amp; Help Desk &gt; Help Desk</code> and add your user to the Help Desk team.
+            </div>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
               <ul>
@@ -1057,6 +1105,9 @@
             <ol class="howto-steps">
               <li>At the end of each semester, filter <code class="ui-path">Service &gt; Service Analytics</code> by the current semester date range and export NPS/CSAT summaries for Marketing case studies.</li>
             </ol>
+            <div class="troubleshoot-tip">
+              <strong>If blocked or missing:</strong> Viewing dashboards works on free seats, but saving reports or scheduling monthly PDFs requires your <strong>Service Hub Pro Seat</strong> plus <strong>Report Edit permissions</strong> under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.
+            </div>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Video Guide</div>
               <ul>
@@ -1094,6 +1145,9 @@
               <li><strong>Setup:</strong> Go to <code class="ui-path">Service &gt; Knowledge Base</code>, customize branding/logo, connect a domain under <code class="ui-path">Settings &gt; Domains</code>, and create categories (<em>Client Onboarding</em>, <em>Internal SOPs</em>).</li>
               <li><strong>Usage:</strong> Click <strong>Create article</strong>, write your guide, set <strong>Control audience access</strong> to <em>Public</em> or <em>Private / Password-protected</em>, and click <strong>Publish</strong>.</li>
             </ol>
+            <div class="troubleshoot-tip">
+              <strong>If blocked or missing:</strong> Publishing articles requires your <strong>Service Hub Pro Seat</strong>. Connecting a custom subdomain (e.g., <code>help.cougarstrategy.org</code>) requires a <strong>Super-Admin</strong> with DNS access under <code class="ui-path">Settings &gt; Domains</code>.
+            </div>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Video &amp; Knowledge Base Guides</div>
               <ul>
@@ -1122,6 +1176,9 @@
               <li><strong>Setup:</strong> Go to <code class="ui-path">Service &gt; Chatflows &gt; Create chatflow &gt; Website &gt; Bot</code> and add quick-reply buttons: <strong>Hire CSG (Project Inquiry)</strong>, <strong>Join CSG (Student)</strong>, and <strong>Alumni / General</strong>.</li>
               <li><strong>Usage:</strong> For <em>Hire CSG</em>, capture <code>First/Last Name</code>, <code>Email</code>, and <code>Company Name</code>, add the <strong>Book a meeting</strong> action, and set website URLs under <strong>Targeting</strong>.</li>
             </ol>
+            <div class="troubleshoot-tip">
+              <strong>If blocked or missing:</strong> Building bots requires your <strong>Service Hub Pro Seat</strong> (or a Marketing Core Seat). If the chat widget does not appear on CSG's website after publishing, ask your website admin to install the <strong>HubSpot Tracking Code</strong> (<code class="ui-path">Settings &gt; Tracking &amp; Analytics</code>).
+            </div>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Video &amp; Knowledge Base Guides</div>
               <ul>
@@ -1150,6 +1207,9 @@
               <li><strong>Setup:</strong> Go to <code class="ui-path">Service &gt; Customer Agent &gt; Get Started</code>, connect your Knowledge Base, CSG website URLs, and approved PDFs under <strong>Data Sources</strong>, and set human <strong>Handoff</strong> rules.</li>
               <li><strong>Usage:</strong> Review <strong>Unhandled Questions</strong> weekly and update source documents when CSG services change.</li>
             </ol>
+            <div class="troubleshoot-tip">
+              <strong>If blocked or missing:</strong> Included in your <strong>Service Hub Pro Seat</strong>, but each AI conversation consumes <strong>HubSpot Credits</strong>. Check available credits with the Operations Director under <code class="ui-path">Settings &gt; Account &amp; Billing</code> before turning it live on the public website.
+            </div>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
               <ul>
@@ -1180,6 +1240,9 @@
               <li><strong>Setup:</strong> Go to <code class="ui-path">Settings &gt; Inbox &amp; Help Desk &gt; Customer Portal</code>, connect your domain, apply CSG branding under <strong>Theme</strong>, and choose visible ticket pipelines under <strong>General</strong>.</li>
               <li><strong>Usage:</strong> Open <code class="ui-path">CRM &gt; Contacts</code> on the client sponsor and click <code class="ui-path">Actions &gt; Send customer portal invitation</code>.</li>
             </ol>
+            <div class="troubleshoot-tip">
+              <strong>If blocked or missing:</strong> Configuring portal settings and domains requires a <strong>Super-Admin</strong> with your <strong>Service Hub Pro Seat</strong>. Once configured, any CS lead with CRM edit access can send portal invitations from a Contact record.
+            </div>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Video Guide</div>
               <ul>
@@ -1239,6 +1302,9 @@
       <li>[Enter required fields / configure settings].</li>
       <li>[Publish / launch / check results].</li>
     </ol>
+    <div class="troubleshoot-tip">
+      <strong>If blocked or missing:</strong> [Note which seat is needed and which permission to request under <code class="ui-path">Settings &gt; Users &amp; Teams</code>.]
+    </div>
     <div class="links-strip">
       <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
       <ul>
