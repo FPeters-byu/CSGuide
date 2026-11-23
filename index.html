@@ -152,7 +152,18 @@
     td { padding: 11px 14px; border-bottom: 1px solid var(--border-subtle); color: var(--ink-secondary); vertical-align: top; }
     tr:last-child td { border-bottom: none; }
 
-    /* Buttons & Search */
+    .pill-core {
+      display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; padding: 2px 8px; background: var(--csg-royal-light);
+      color: var(--csg-royal); border: 1px solid rgba(0, 86, 179, 0.25); white-space: nowrap;
+    }
+    .pill-optional {
+      display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.04em; padding: 2px 8px; background: var(--bg-subtle);
+      color: var(--ink-muted); border: 1px solid var(--border-light); white-space: nowrap;
+    }
+
+    /* Buttons */
     .btn-outline { padding: 8px 14px; font-size: 13px; font-weight: 600; background: #FFFFFF; color: var(--ink-primary); border: 1px solid var(--border-strong); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
     .btn-outline:hover { background: var(--ink-primary); color: #FFFFFF; }
     .btn-primary {
@@ -161,7 +172,7 @@
     }
     .btn-primary:hover { background: var(--csg-navy); }
 
-    /* "What do I want to do?" Action Cards */
+    /* HubSpot Tool / How-To Cards */
     .howto-card {
       border: 1px solid var(--border-strong);
       background: #FFFFFF;
@@ -181,19 +192,26 @@
     .howto-kicker {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--csg-royal);
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
     .howto-header h4 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 600;
       color: var(--ink-primary);
+      line-height: 1.25;
     }
-    .toggle-icon { font-size: 18px; font-weight: 700; color: var(--csg-royal); }
+    .howto-goal {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      margin-top: 4px;
+    }
+    .howto-goal strong { color: var(--csg-navy); }
+    .toggle-icon { font-size: 18px; font-weight: 700; color: var(--csg-royal); flex-shrink: 0; }
     .howto-body { padding: 18px 20px 20px; display: block; }
     .howto-card.collapsed .howto-body { display: none; }
     .howto-card.collapsed .howto-header { border-bottom: none; }
@@ -201,9 +219,17 @@
     .howto-why {
       font-size: 13.5px;
       color: var(--ink-secondary);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border-subtle);
+    }
+    .step-subhead {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--csg-navy);
+      margin: 12px 0 6px;
     }
     .howto-steps {
       padding-left: 20px;
@@ -223,6 +249,7 @@
       background: var(--csg-royal-light);
       border: 1px solid rgba(0, 86, 179, 0.22);
       padding: 12px 16px;
+      margin-top: 14px;
     }
     .links-strip-title {
       font-size: 11.5px;
@@ -442,7 +469,7 @@
         </div>
       </div>
 
-      <!-- 3. How HubSpot Organizes Data (Variant 1) -->
+      <!-- 3. How HubSpot Organizes Data -->
       <div class="part-block">
         <div class="part-heading">
           <h3>How HubSpot Organizes Data: <span class="blue">4 Core Objects</span></h3>
@@ -473,6 +500,13 @@
           (2) <strong>Log key takeaways</strong> after client meetings so future cohorts always have full context.
         </div>
 
+        <!-- End-of-Semester Handover Rule on Main Page -->
+        <div class="callout warn">
+          <strong>End-of-Semester Handover Rule (Week 13/14):</strong>
+          (1) Confirm every graduating client has a completed <strong>NPS/Feedback Survey</strong> and pinned final summary note.
+          (2) Reassign the <strong>Service Hub Pro Seat</strong>, <strong>Marketing Core Seats</strong>, and <strong>Sales Seats</strong> from graduating seniors to incoming leads (downgrade seniors to free View-Only access so all history stays intact).
+        </div>
+
         <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
           <a href="#marketing" class="btn-primary" onclick="navigateTo('marketing')">2. Marketing Hub How-Tos &rarr;</a>
           <a href="#sales" class="btn-primary" onclick="navigateTo('sales')">3. Sales Hub How-Tos &rarr;</a>
@@ -495,7 +529,6 @@
         </div>
       </div>
 
-      <!-- Quick Overview of Marketing Seats -->
       <div class="seat-overview-box">
         <h3>What Your Marketing Seats Let You Do (Marketing Hub Pro)</h3>
         <p style="font-size:14px; color:var(--ink-secondary);">
@@ -513,13 +546,14 @@
       <article class="howto-card">
         <div class="howto-header" onclick="toggleCard(this)">
           <div>
-            <span class="howto-kicker">What do I want to do?</span>
-            <h4>"I want to run a marketing campaign across email and LinkedIn"</h4>
+            <span class="howto-kicker">HubSpot Menu: Marketing &gt; Campaigns</span>
+            <h4>Campaigns &amp; Marketing Studio</h4>
+            <p class="howto-goal"><strong>What do I want to do?</strong> Run a coordinated campaign across email and LinkedIn and track generated leads.</p>
           </div>
           <span class="toggle-icon">&minus;</span>
         </div>
         <div class="howto-body">
-          <p class="howto-why"><strong>Concept:</strong> Group all emails, forms, social posts, and landing pages under one Campaign so CSG can track how many real leads each effort generated.</p>
+          <p class="howto-why"><strong>What this tool does:</strong> Groups all emails, forms, social posts, and landing pages under one campaign dashboard so CSG can measure how many leads and deals each initiative produced.</p>
           <ol class="howto-steps">
             <li>Go to <code class="ui-path">Marketing &gt; Campaigns</code> (or <code class="ui-path">Marketing &gt; Marketing Studio</code>) and click <strong>Create campaign</strong>.</li>
             <li>Name it clearly by semester and goal (e.g., <em>Fall 2026 – Tech Startup Outreach</em>) and set your target audience.</li>
@@ -540,13 +574,14 @@
       <article class="howto-card">
         <div class="howto-header" onclick="toggleCard(this)">
           <div>
-            <span class="howto-kicker">What do I want to do?</span>
-            <h4>"I want to build a website form, email, or automated follow-up"</h4>
+            <span class="howto-kicker">HubSpot Menu: Marketing &gt; Forms &amp; Email</span>
+            <h4>Forms, Emails &amp; Automated Follow-Ups</h4>
+            <p class="howto-goal"><strong>What do I want to do?</strong> Build a website inquiry form and auto-send CSG's Capabilities Deck.</p>
           </div>
           <span class="toggle-icon">&minus;</span>
         </div>
         <div class="howto-body">
-          <p class="howto-why"><strong>Concept:</strong> Replace static email links with HubSpot forms that auto-save leads and immediately send CSG's Capabilities Deck.</p>
+          <p class="howto-why"><strong>What this tool does:</strong> Replaces static email links with HubSpot forms that save leads straight to the CRM and immediately trigger branded follow-up emails.</p>
           <ol class="howto-steps">
             <li><strong>Build Form:</strong> Go to <code class="ui-path">Marketing &gt; Forms &gt; Create form</code>, include <em>First Name, Last Name, Email, Company Name, Project Scope</em>, and publish.</li>
             <li><strong>Build Email:</strong> Go to <code class="ui-path">Marketing &gt; Email &gt; Create email</code> (choose <em>Automated</em> if triggered by a form) and add your copy + Capabilities PDF link.</li>
@@ -567,13 +602,14 @@
       <article class="howto-card">
         <div class="howto-header" onclick="toggleCard(this)">
           <div>
-            <span class="howto-kicker">What do I want to do?</span>
-            <h4>"I want to segment Alumni vs. Clients (without exceeding 2,000 contacts)"</h4>
+            <span class="howto-kicker">HubSpot Menu: CRM &gt; Lists &amp; Contacts</span>
+            <h4>Lists &amp; Marketing Contact Limits</h4>
+            <p class="howto-goal"><strong>What do I want to do?</strong> Segment Alumni vs. Clients without exceeding our 2,000 Marketing Contact limit.</p>
           </div>
           <span class="toggle-icon">&minus;</span>
         </div>
         <div class="howto-body">
-          <p class="howto-why"><strong>Concept:</strong> Active lists update automatically based on our custom <code>Contact Type</code> property so we never email the wrong group.</p>
+          <p class="howto-why"><strong>What this tool does:</strong> Active lists update automatically based on contact properties so CSG never emails the wrong group or pays overage fees.</p>
           <ol class="howto-steps">
             <li>Go to <code class="ui-path">CRM &gt; Lists &gt; Create list</code> and select <strong>Active list</strong>.</li>
             <li>Filter by <code class="ui-path">Contact Type is any of CSG Alumni</code> (or <em>Prospective Client / Past Client</em>).</li>
@@ -593,13 +629,14 @@
       <article class="howto-card">
         <div class="howto-header" onclick="toggleCard(this)">
           <div>
-            <span class="howto-kicker">What do I want to do?</span>
-            <h4>"I want to schedule LinkedIn posts &amp; improve Google / AI search visibility"</h4>
+            <span class="howto-kicker">HubSpot Menu: Marketing &gt; Social &amp; Content &gt; SEO</span>
+            <h4>Social Scheduling &amp; SEO / AEO</h4>
+            <p class="howto-goal"><strong>What do I want to do?</strong> Schedule LinkedIn posts and improve Google &amp; AI search visibility.</p>
           </div>
           <span class="toggle-icon">&minus;</span>
         </div>
         <div class="howto-body">
-          <p class="howto-why"><strong>Concept:</strong> Schedule posts directly from HubSpot and check SEO / AEO (Answer Engine Optimization) recommendations so ChatGPT, Gemini, and Google surface CSG.</p>
+          <p class="howto-why"><strong>What this tool does:</strong> Publishes LinkedIn posts from one calendar and checks SEO / AEO recommendations so Google, ChatGPT, and Gemini surface CSG.</p>
           <ol class="howto-steps">
             <li><strong>Social:</strong> Go to <code class="ui-path">Marketing &gt; Social &gt; Create social post</code>, select CSG LinkedIn, write copy, and schedule.</li>
             <li><strong>SEO &amp; AEO:</strong> Go to <code class="ui-path">Content &gt; SEO</code> (or <em>AEO</em>) to review site audit recommendations and target consulting keywords.</li>
@@ -617,7 +654,7 @@
       <div class="edit-bar">
         <span><strong>Marketing Team Editing Tip:</strong> Want to add another Marketing How-To card? Copy the clean card template and paste it above.</span>
         <div>
-          <button class="btn-outline" onclick="copySimpleCard('Marketing')">Copy "What do I want to do?" Card HTML</button>
+          <button class="btn-outline" onclick="copySimpleCard('Marketing')">Copy Card HTML Template</button>
           <span id="copy-msg-Marketing" style="margin-left:8px; font-weight:600; color:var(--success-ink);"></span>
         </div>
       </div>
@@ -637,7 +674,6 @@
         </div>
       </div>
 
-      <!-- Quick Overview of Sales Seats -->
       <div class="seat-overview-box">
         <h3>What Your Sales Seats Let You Do (Sales Hub Pro)</h3>
         <p style="font-size:14px; color:var(--ink-secondary);">
@@ -655,13 +691,14 @@
       <article class="howto-card">
         <div class="howto-header" onclick="toggleCard(this)">
           <div>
-            <span class="howto-kicker">What do I want to do?</span>
-            <h4>"I want to log a new prospect and track a deal through our pipeline"</h4>
+            <span class="howto-kicker">HubSpot Menu: CRM &gt; Deals</span>
+            <h4>Deals &amp; Pipeline Tracking</h4>
+            <p class="howto-goal"><strong>What do I want to do?</strong> Log a new prospect engagement and track it through our pipeline stages.</p>
           </div>
           <span class="toggle-icon">&minus;</span>
         </div>
         <div class="howto-body">
-          <p class="howto-why"><strong>Concept:</strong> Every potential client project must be a Deal linked to a Company and Contact so leadership sees accurate semester pipeline.</p>
+          <p class="howto-why"><strong>What this tool does:</strong> Tracks every potential client project from initial outreach to signed contract, linked directly to the Company and Contact.</p>
           <ol class="howto-steps">
             <li>Go to <code class="ui-path">CRM &gt; Deals</code> and click <strong>Create deal</strong> (top right).</li>
             <li>Name it <code class="ui-path">[Company Name] – [Semester/Scope]</code>, select the CSG Pipeline, enter the deal amount, and set the expected close date.</li>
@@ -681,13 +718,14 @@
       <article class="howto-card">
         <div class="howto-header" onclick="toggleCard(this)">
           <div>
-            <span class="howto-kicker">What do I want to do?</span>
-            <h4>"I want a prospect to book a Discovery Call without back-and-forth emails"</h4>
+            <span class="howto-kicker">HubSpot Menu: Library &gt; Meetings</span>
+            <h4>Meeting Scheduling Links</h4>
+            <p class="howto-goal"><strong>What do I want to do?</strong> Let a prospect book a Discovery Call directly onto my calendar.</p>
           </div>
           <span class="toggle-icon">&minus;</span>
         </div>
         <div class="howto-body">
-          <p class="howto-why"><strong>Concept:</strong> HubSpot Meeting Links sync with your calendar (replaces Calendly) and automatically log booked calls onto the Contact record.</p>
+          <p class="howto-why"><strong>What this tool does:</strong> Syncs with your calendar (replaces Calendly) and automatically logs booked calls onto the Contact record.</p>
           <ol class="howto-steps">
             <li>Go to <code class="ui-path">Library &gt; Meetings</code> (or <code class="ui-path">Sales &gt; Meetings</code>) and click <strong>Create scheduling page</strong>.</li>
             <li>Set duration to <strong>20 or 30 minutes</strong>, connect Zoom/Teams, and set your available weekly hours.</li>
@@ -706,13 +744,14 @@
       <article class="howto-card">
         <div class="howto-header" onclick="toggleCard(this)">
           <div>
-            <span class="howto-kicker">What do I want to do?</span>
-            <h4>"I want to send a Capabilities Deck or Proposal and see when clients read it"</h4>
+            <span class="howto-kicker">HubSpot Menu: Library &gt; Documents</span>
+            <h4>Documents &amp; Proposal Tracking</h4>
+            <p class="howto-goal"><strong>What do I want to do?</strong> Share a Capabilities Deck or Proposal and get notified when the client opens it.</p>
           </div>
           <span class="toggle-icon">&minus;</span>
         </div>
         <div class="howto-body">
-          <p class="howto-why"><strong>Concept:</strong> Uploading PDFs to HubSpot Documents gives you real-time alerts when a prospect opens your deck and shows which pages they read longest.</p>
+          <p class="howto-why"><strong>What this tool does:</strong> Tracks PDF views page-by-page and alerts you the moment a prospect reads your deck.</p>
           <ol class="howto-steps">
             <li>Go to <code class="ui-path">Library &gt; Documents</code> and click <strong>Upload document</strong> (upload the CSG Capabilities Deck or Scope Proposal PDF).</li>
             <li>Click <strong>Share</strong> to generate a trackable link (require email address so you know who viewed it).</li>
@@ -731,13 +770,14 @@
       <article class="howto-card">
         <div class="howto-header" onclick="toggleCard(this)">
           <div>
-            <span class="howto-kicker">What do I want to do?</span>
-            <h4>"I want to send automated outbound follow-up sequences to leads"</h4>
+            <span class="howto-kicker">HubSpot Menu: Automations &gt; Sequences</span>
+            <h4>Outbound Sales Sequences</h4>
+            <p class="howto-goal"><strong>What do I want to do?</strong> Send timed 1-to-1 follow-up emails that stop automatically when a prospect replies.</p>
           </div>
           <span class="toggle-icon">&minus;</span>
         </div>
         <div class="howto-body">
-          <p class="howto-why"><strong>Concept:</strong> Sequences send a timed series of 1-to-1 follow-up emails and task reminders—and automatically stop the moment the prospect replies.</p>
+          <p class="howto-why"><strong>What this tool does:</strong> Automates multi-step outreach emails and task reminders so warm leads never slip through the cracks.</p>
           <ol class="howto-steps">
             <li>Go to <code class="ui-path">Automations &gt; Sequences</code> and click <strong>Create sequence</strong>.</li>
             <li>Add 3–4 short, personalized email steps spaced 3 business days apart + a LinkedIn/call task reminder.</li>
@@ -755,7 +795,7 @@
       <div class="edit-bar">
         <span><strong>Sales Team Editing Tip:</strong> Want to add another Sales How-To card? Copy the clean card template and paste it above.</span>
         <div>
-          <button class="btn-outline" onclick="copySimpleCard('Sales')">Copy "What do I want to do?" Card HTML</button>
+          <button class="btn-outline" onclick="copySimpleCard('Sales')">Copy Card HTML Template</button>
           <span id="copy-msg-Sales" style="margin-left:8px; font-weight:600; color:var(--success-ink);"></span>
         </div>
       </div>
@@ -771,11 +811,11 @@
           <h2>Service Hub Pro Playbook</h2>
         </div>
         <div class="section-subtitle">
-          Written for each team's <strong>Customer Success Lead</strong> &amp; the <strong>Operations Director</strong>.
+          Built from scratch for each team's <strong>Customer Success Lead</strong> &amp; the <strong>Operations Director</strong>.
         </div>
       </div>
 
-      <!-- Role-Specific Overview Box -->
+      <!-- FIRST BOX (KEPT EXACTLY AS APPROVED) -->
       <div class="seat-overview-box">
         <h3>Your Role: Customer Success Lead + Operations Director</h3>
         <p style="font-size:14px; color:var(--ink-secondary);">
@@ -804,31 +844,109 @@
         </div>
       </div>
 
-      <!-- CORE CUSTOMER SUCCESS PLAYBOOKS (1–4) -->
+      <!-- NEW OVERVIEW TABLE: STARTING FROM ZERO -->
       <div class="part-block">
         <div class="part-heading">
-          <h3>Core Customer Success Workflows <span class="blue">(Start Here First)</span></h3>
-          <span class="part-tag">What do I want to do? &rarr; Short Steps &rarr; Links</span>
+          <h3>Service Area Overview: <span class="blue">What Each Function Does for CSG</span></h3>
+          <span class="part-tag">Starting From Zero &bull; Tool Map</span>
+        </div>
+        <p style="font-size:14px; color:var(--ink-secondary); margin-bottom:12px;">
+          Since CSG has not used the Service area yet, use this table to see what each menu item in HubSpot does and which 4 tools you should build first:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:23%;">HubSpot Menu / Tool</th>
+                <th style="width:34%;">What the Function Does</th>
+                <th style="width:31%;">How CSG Uses It</th>
+                <th style="width:12%;">Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Client &amp; Project Database</strong><br><code class="ui-path">CRM &gt; Companies &amp; Deals</code></td>
+                <td>Stores organizations, contacts, past projects, custom health ratings, and pinned notes in one shared record.</td>
+                <td>Audit &amp; update all past/active clients with the Operations Director so no client history is lost.</td>
+                <td><span class="pill-core">Core CS #1</span></td>
+              </tr>
+              <tr>
+                <td><strong>Feedback Surveys</strong><br><code class="ui-path">Service &gt; Feedback Surveys</code></td>
+                <td>Creates and sends automated NPS (0–10) and CSAT satisfaction surveys, plus stores imported CSV scores.</td>
+                <td>Collect post-project ratings, import past Excel/Qualtrics surveys, and gather client quotes for Marketing.</td>
+                <td><span class="pill-core">Core CS #2</span></td>
+              </tr>
+              <tr>
+                <td><strong>Help Desk</strong><br><code class="ui-path">Service &gt; Help Desk</code></td>
+                <td>Shared team inbox &amp; ticket workspace that logs client emails, follow-ups, and SLAs onto the Company record.</td>
+                <td>Run structured past-client outreach, testimonial requests, and project check-ins from one shared inbox.</td>
+                <td><span class="pill-core">Core CS #3</span></td>
+              </tr>
+              <tr>
+                <td><strong>Service Analytics</strong><br><code class="ui-path">Service &gt; Service Analytics</code></td>
+                <td>Pre-built reporting suite tracking NPS trends, CSAT scores, ticket volume, and team response times.</td>
+                <td>Export semester satisfaction metrics for Marketing case studies and Paul Godfrey's leadership dashboard.</td>
+                <td><span class="pill-core">Core CS #4</span></td>
+              </tr>
+              <tr>
+                <td><strong>Knowledge Base</strong><br><code class="ui-path">Service &gt; Knowledge Base</code></td>
+                <td>Hosts searchable public FAQ articles or password-protected internal SOP guides.</td>
+                <td>Optional: Publish client onboarding FAQs or internal consultant guides.</td>
+                <td><span class="pill-optional">Website / Admin</span></td>
+              </tr>
+              <tr>
+                <td><strong>Chatflows</strong><br><code class="ui-path">Service &gt; Chatflows</code></td>
+                <td>Rule-based website chat widget that routes visitors and embeds calendar booking links.</td>
+                <td>Optional: Route website visitors (Hire CSG vs. Student Applicant) 24/7.</td>
+                <td><span class="pill-optional">Website / Admin</span></td>
+              </tr>
+              <tr>
+                <td><strong>Customer Agent</strong><br><code class="ui-path">Service &gt; Customer Agent</code></td>
+                <td>Breeze AI assistant trained on your website/PDFs to answer routine questions (uses HubSpot Credits).</td>
+                <td>Optional: Auto-answer routine prospect questions from the Capabilities Deck.</td>
+                <td><span class="pill-optional">Website / Admin</span></td>
+              </tr>
+              <tr>
+                <td><strong>Customer Portal</strong><br><code class="ui-path">Settings &gt; Customer Portal</code></td>
+                <td>Secure login portal where external client sponsors can view open project tickets and deliverables.</td>
+                <td>Optional: Give active client sponsors live visibility into project deliverables.</td>
+                <td><span class="pill-optional">Website / Admin</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PART A: 4 CORE CUSTOMER SUCCESS CARDS -->
+      <div class="part-block">
+        <div class="part-heading">
+          <h3>Core Customer Success Tools <span class="blue">(Set Up &amp; Use First)</span></h3>
+          <span class="part-tag">HubSpot Menu &rarr; What Do I Want To Do? &rarr; Setup &amp; Usage</span>
         </div>
 
-        <!-- CS Card 1: Past Clients, Projects & Contacts + Account Health -->
+        <!-- CS Card 1: Client & Project Database -->
         <article class="howto-card">
           <div class="howto-header" onclick="toggleCard(this)">
             <div>
-              <span class="howto-kicker">What do I want to do? &bull; Database &amp; Account Health</span>
-              <h4>"I want to collect &amp; update all past clients, projects, and contacts with the Operations Director"</h4>
+              <span class="howto-kicker">HubSpot Menu: CRM &gt; Companies &amp; Deals (Pro Equivalent of Customer Success)</span>
+              <h4>Client &amp; Project Database (Account Health &amp; History)</h4>
+              <p class="howto-goal"><strong>What do I want to do?</strong> Collect and update all past clients, projects, and contacts with the Operations Director.</p>
             </div>
             <span class="toggle-icon">&minus;</span>
           </div>
           <div class="howto-body">
             <p class="howto-why">
-              <strong>Why &amp; Concept:</strong> Prevents semester brain drain by keeping every past and active client's contacts, project history, and relationship health (<em>Green / Yellow / Red</em>) accurate in one place. <em>(Note: On Service Hub Pro, we track health via custom Company properties + Saved Views).</em>
+              <strong>What this tool does:</strong> Links every client organization (<em>Company</em>), decision-maker (<em>Contact</em>), and past consulting engagement (<em>Deal</em>) in one place. <em>(Note: The dedicated <code>Service &gt; Customer Success</code> workspace requires Enterprise, so on Service Hub Pro we build this using Custom Properties + Saved Views in CRM.)</em>
             </p>
+            <div class="step-subhead">1. How to Set It Up (First-Time Build)</div>
             <ol class="howto-steps">
-              <li><strong>Verify Properties (One-Time Setup):</strong> Under <code class="ui-path">Settings &gt; Properties &gt; Company Properties</code>, ensure <strong>CSG Client Health Score</strong> (<em>Green - On Track, Yellow - At Risk, Red - Critical</em>) and <strong>Project Milestone Status</strong> (<em>Kickoff Completed, Phase 1 Delivered, Phase 2 Delivered, Final Presentation Delivered</em>) exist.</li>
-              <li><strong>Audit &amp; Update Past Clients:</strong> Open <code class="ui-path">CRM &gt; Companies</code> with the Operations Director. Check each past/active client record to confirm key Contacts (tagged <code class="ui-path">Contact Type = Past Client</code> or <code class="ui-path">Active Client</code>) and past project Deals are linked.</li>
-              <li><strong>Log Status &amp; Pin Notes:</strong> Update the client's <strong>Health Score</strong> and <strong>Milestone Status</strong>, then write a 3-bullet summary in <strong>Notes</strong> and click <strong>Pin</strong> so it stays at the top.</li>
-              <li><strong>Monitor Risk View:</strong> Open your saved view <strong>Active / At-Risk CSG Clients</strong> (filtered by <code>Health Score = Yellow or Red</code>) and assign a follow-up <strong>Task</strong> to the Operations Director if a client needs attention.</li>
+              <li>Go to <code class="ui-path">Settings &gt; Properties &gt; Company Properties</code> and create two dropdown fields: <strong>CSG Client Health Score</strong> (<em>Green - On Track, Yellow - At Risk, Red - Critical</em>) and <strong>Project Milestone Status</strong> (<em>Kickoff Completed, Phase 1 Delivered, Phase 2 Delivered, Final Presentation Delivered</em>).</li>
+              <li>Go to <code class="ui-path">CRM &gt; Companies</code>, click <strong>+ Add view</strong>, filter by <code>CSG Client Health Score is any of Yellow, Red</code>, and save it as <strong>At-Risk / Follow-Up Clients</strong>.</li>
+            </ol>
+            <div class="step-subhead">2. How to Use It (Ongoing CS Workflow)</div>
+            <ol class="howto-steps">
+              <li>Review <code class="ui-path">CRM &gt; Companies</code> with the Operations Director to verify every past/active client has linked Contacts (<code class="ui-path">Contact Type = Past Client</code> or <code class="ui-path">Active Client</code>) and past project Deals.</li>
+              <li>Update the client's <strong>Health Score</strong>, write a 3-bullet status summary in <strong>Notes</strong>, and click <strong>Pin</strong> so incoming teams see it immediately.</li>
             </ol>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
@@ -842,23 +960,30 @@
           </div>
         </article>
 
-        <!-- CS Card 2: NPS & Feedback Surveys (+ Historical CSV Import) -->
+        <!-- CS Card 2: Feedback Surveys -->
         <article class="howto-card">
           <div class="howto-header" onclick="toggleCard(this)">
             <div>
-              <span class="howto-kicker">What do I want to do? &bull; NPS, CSAT &amp; Past Survey Import</span>
-              <h4>"I want to send NPS / feedback surveys to clients &amp; import past survey data"</h4>
+              <span class="howto-kicker">HubSpot Menu: Service &gt; Feedback Surveys</span>
+              <h4>Feedback Surveys (NPS, CSAT &amp; Past Survey Import)</h4>
+              <p class="howto-goal"><strong>What do I want to do?</strong> Send post-project NPS/CSAT surveys to clients and import past survey results.</p>
             </div>
             <span class="toggle-icon">&minus;</span>
           </div>
           <div class="howto-body">
             <p class="howto-why">
-              <strong>Why &amp; Concept:</strong> Centralizes client satisfaction scores (<strong>CSAT</strong> &amp; <strong>NPS</strong>) and quotable testimonials on Contact/Company records so Marketing has real proof points for case studies and the website.
+              <strong>What this tool does:</strong> Sends branded satisfaction surveys (<strong>NPS</strong> 0–10 loyalty scale or <strong>CSAT</strong> project ratings) and saves every score and testimonial quote directly onto the client's CRM record.
             </p>
+            <div class="step-subhead">1. How to Set It Up (First-Time Build)</div>
             <ol class="howto-steps">
-              <li><strong>Create Automated Survey:</strong> Go to <code class="ui-path">Service &gt; Feedback Surveys &gt; Create survey</code>, pick <strong>NPS</strong> (0–10 recommendation scale) or <strong>CSAT</strong>, add the CSG logo, and select <strong>Email</strong> or <strong>Shareable link</strong>.</li>
-              <li><strong>Automate Post-Project Send &amp; Testimonials:</strong> Set the survey to send automatically <strong>3 days after a Deal moves to Closed Won / Completed</strong> (or at semester end). Add a workflow: if <strong>NPS &ge; 9</strong>, send a thank-you email asking for a website testimonial quote.</li>
-              <li><strong>Import Past Surveys (Excel / Google Forms / Qualtrics):</strong> Create custom Contact properties (<code class="ui-path">Historical NPS Score</code>, <code class="ui-path">Past Project CSAT Rating</code>, <code class="ui-path">Client Feedback &amp; Testimonial Quote</code>, <code class="ui-path">Survey Completion Date</code>), save your spreadsheet as <strong>.csv (UTF-8)</strong> with an <code>Email</code> column, and upload via <code class="ui-path">CRM &gt; Contacts &gt; Import</code>.</li>
+              <li>Go to <code class="ui-path">Service &gt; Feedback Surveys &gt; Create survey</code>, choose <strong>NPS</strong> or <strong>CSAT</strong>, add the CSG logo, and select <strong>Email</strong> or <strong>Shareable link</strong>.</li>
+              <li>Set the trigger to send automatically <strong>3 days after a Deal moves to Closed Won / Completed</strong>, and add a follow-up workflow: if <strong>NPS &ge; 9</strong>, send a thank-you email asking for a testimonial quote.</li>
+              <li>To import old Excel/Qualtrics surveys: create Contact properties (<code class="ui-path">Historical NPS Score</code>, <code class="ui-path">Past Project CSAT Rating</code>, <code class="ui-path">Client Feedback &amp; Testimonial Quote</code>) under <code class="ui-path">Settings &gt; Properties</code>.</li>
+            </ol>
+            <div class="step-subhead">2. How to Use It (Ongoing CS Workflow)</div>
+            <ol class="howto-steps">
+              <li>Share the survey link after final client presentations or verify that the automated post-project email triggered.</li>
+              <li>For past surveys, save your spreadsheet as <strong>.csv (UTF-8)</strong> with an <code>Email</code> column and upload via <code class="ui-path">CRM &gt; Contacts &gt; Import</code>.</li>
             </ol>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
@@ -873,23 +998,29 @@
           </div>
         </article>
 
-        <!-- CS Card 3: Client Outreach & Shared Help Desk -->
+        <!-- CS Card 3: Help Desk -->
         <article class="howto-card">
           <div class="howto-header" onclick="toggleCard(this)">
             <div>
-              <span class="howto-kicker">What do I want to do? &bull; Client Outreach &amp; Shared Inbox</span>
-              <h4>"I want to run client outreach, check-ins &amp; project follow-ups in one shared workspace"</h4>
+              <span class="howto-kicker">HubSpot Menu: Service &gt; Help Desk</span>
+              <h4>Help Desk (Client Outreach &amp; Shared Team Inbox)</h4>
+              <p class="howto-goal"><strong>What do I want to do?</strong> Run client outreach, testimonial follow-ups, and check-ins in one shared inbox.</p>
             </div>
             <span class="toggle-icon">&minus;</span>
           </div>
           <div class="howto-body">
             <p class="howto-why">
-              <strong>Why &amp; Concept:</strong> Instead of losing client replies in personal student inboxes, <strong>Help Desk</strong> logs every outreach thread, data request, and follow-up as a ticket directly on the client's Company record.
+              <strong>What this tool does:</strong> Replaces private student email threads with a shared team workspace where every client outreach message and reply is logged as a ticket on the Company record.
             </p>
+            <div class="step-subhead">1. How to Set It Up (First-Time Build)</div>
             <ol class="howto-steps">
-              <li><strong>Connect Shared Inbox (Setup):</strong> Go to <code class="ui-path">Settings &gt; Inbox &amp; Help Desk &gt; Help Desk</code> &rarr; click <strong>Connect a channel &gt; Team Email</strong> (e.g., <code>client-support@...</code>) and set pipeline stages: <em>New Request &rarr; Under Review &rarr; In Progress &rarr; Waiting on Client &rarr; Resolved</em>.</li>
-              <li><strong>Log Outreach or Client Requests:</strong> Open <code class="ui-path">Service &gt; Help Desk</code>, click <strong>Create ticket</strong> (e.g., <em>Client Post-Project Check-In &amp; Testimonial</em>), assign yourself as <strong>Ticket Owner</strong>, and link the <strong>Company</strong> &amp; <strong>Contact</strong>.</li>
-              <li><strong>Reply &amp; Collaborate Internally:</strong> Send emails directly from the ticket window so the full thread stays in CRM. Use the yellow <strong>Comment (Internal Note)</strong> tab with <code>@Name</code> to coordinate privately with the Operations Director or Paul Godfrey.</li>
+              <li>Go to <code class="ui-path">Settings &gt; Inbox &amp; Help Desk &gt; Help Desk</code> &rarr; click <strong>Connect a channel &gt; Team Email</strong> (e.g., <code>client-support@...</code>).</li>
+              <li>Configure ticket stages: <em>New Request &rarr; Under Review &rarr; In Progress &rarr; Waiting on Client &rarr; Resolved</em> (and optional SLA response reminders).</li>
+            </ol>
+            <div class="step-subhead">2. How to Use It (Ongoing CS Workflow)</div>
+            <ol class="howto-steps">
+              <li>Open <code class="ui-path">Service &gt; Help Desk</code>, click <strong>Create ticket</strong> (e.g., <em>Past Client Check-In &amp; Testimonial</em>), assign yourself as <strong>Ticket Owner</strong>, and link the <strong>Company</strong> &amp; <strong>Contact</strong>.</li>
+              <li>Send outreach emails directly from the ticket so replies stay visible to future cohorts, and use the yellow <strong>Comment</strong> tab with <code>@Name</code> to tag the Operations Director.</li>
             </ol>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
@@ -903,23 +1034,28 @@
           </div>
         </article>
 
-        <!-- CS Card 4: Service Analytics & Reporting -->
+        <!-- CS Card 4: Service Analytics -->
         <article class="howto-card">
           <div class="howto-header" onclick="toggleCard(this)">
             <div>
-              <span class="howto-kicker">What do I want to do? &bull; Satisfaction Metrics &amp; Dashboards</span>
-              <h4>"I want to pull NPS scores, client satisfaction stats &amp; response metrics for Marketing &amp; Leadership"</h4>
+              <span class="howto-kicker">HubSpot Menu: Service &gt; Service Analytics</span>
+              <h4>Service Analytics (Satisfaction &amp; Leadership Reports)</h4>
+              <p class="howto-goal"><strong>What do I want to do?</strong> Pull NPS scores and client satisfaction stats for Marketing &amp; Leadership.</p>
             </div>
             <span class="toggle-icon">&minus;</span>
           </div>
           <div class="howto-body">
             <p class="howto-why">
-              <strong>Why &amp; Concept:</strong> Turns client feedback and response times into visual charts that prove CSG's impact to Paul Godfrey and show Marketing which client segments give the highest NPS scores.
+              <strong>What this tool does:</strong> Turns survey results and response metrics into visual charts that prove CSG's project quality to Paul Godfrey and highlight top-performing client segments for Marketing.
             </p>
+            <div class="step-subhead">1. How to Set It Up (First-Time Build)</div>
             <ol class="howto-steps">
-              <li>Go to <code class="ui-path">Service &gt; Service Analytics</code> and open <strong>Customer Outcomes</strong> (NPS &amp; CSAT trends) or <strong>Response Times</strong>.</li>
-              <li>Filter the date range to the current or past semester, then click <strong>Save report &rarr; Add to existing dashboard</strong> (<code class="ui-path">CSG Executive Leadership Dashboard</code>).</li>
-              <li>To automate monthly updates: open <code class="ui-path">Reporting &gt; Dashboards</code> &rarr; click <strong>Share &gt; Email this dashboard</strong> &rarr; schedule a recurring monthly PDF to Paul Godfrey and team leads.</li>
+              <li>Go to <code class="ui-path">Service &gt; Service Analytics</code>, open <strong>Customer Outcomes</strong> (NPS &amp; CSAT trends), and click <strong>Save report &rarr; Add to existing dashboard</strong> (<code class="ui-path">CSG Executive Leadership Dashboard</code>).</li>
+              <li>Open <code class="ui-path">Reporting &gt; Dashboards</code> &rarr; click <strong>Share &gt; Email this dashboard</strong> to schedule a monthly PDF to Paul Godfrey and team leads.</li>
+            </ol>
+            <div class="step-subhead">2. How to Use It (Ongoing CS Workflow)</div>
+            <ol class="howto-steps">
+              <li>At the end of each semester, filter <code class="ui-path">Service &gt; Service Analytics</code> by the current semester date range and export NPS/CSAT summaries for Marketing case studies.</li>
             </ol>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Video Guide</div>
@@ -931,28 +1067,32 @@
         </article>
       </div>
 
-      <!-- SECONDARY / WEBSITE & SELF-SERVICE TOOLS (5–8) -->
-      <div class="part-block">
+      <!-- PART B: OTHER SERVICE DROPDOWN TOOLS (WEBSITE & ADMIN SETUP) -->
+      <div class="part-block" style="margin-bottom:0;">
         <div class="part-heading">
-          <h3>Additional Service Hub Tools <span class="blue">(Website, AI &amp; Client Self-Service)</span></h3>
-          <span class="part-tag">Click Any Card to Expand Steps &amp; Links</span>
+          <h3>Other Service Dropdown Tools <span class="blue">(Website &amp; Admin Setup)</span></h3>
+          <span class="part-tag">Optional Tools &bull; Click Any Card to Expand Setup, Steps &amp; Links</span>
         </div>
+        <p style="font-size:14px; color:var(--ink-secondary); margin-bottom:16px;">
+          These 4 tools also appear under the <strong>Service</strong> dropdown in HubSpot. They are for website self-service and admin projects rather than daily Customer Success tracking—expand any card below when needed:
+        </p>
 
         <!-- CS Card 5: Knowledge Base -->
         <article class="howto-card collapsed">
           <div class="howto-header" onclick="toggleCard(this)">
             <div>
-              <span class="howto-kicker">What do I want to do? &bull; Knowledge Base</span>
-              <h4>"I want to publish client FAQs or password-protected internal SOPs"</h4>
+              <span class="howto-kicker">HubSpot Menu: Service &gt; Knowledge Base</span>
+              <h4>Knowledge Base</h4>
+              <p class="howto-goal"><strong>What do I want to do?</strong> Publish public client onboarding FAQs or password-protected internal SOPs.</p>
             </div>
             <span class="toggle-icon">+</span>
           </div>
           <div class="howto-body">
-            <p class="howto-why"><strong>Concept:</strong> Hosts public articles explaining CSG's consulting process/NDAs to prospects, plus password-protected internal guides for new student consultants.</p>
+            <p class="howto-why"><strong>What this tool does:</strong> Hosts a searchable library of help articles that can be made public for prospective clients or password-protected for student consultants.</p>
+            <div class="step-subhead">1. How to Set It Up &amp; 2. How to Use It</div>
             <ol class="howto-steps">
-              <li>Go to <code class="ui-path">Service &gt; Knowledge Base</code>, customize branding/logo, and connect your domain under <code class="ui-path">Settings &gt; Domains</code>.</li>
-              <li>Create categories (<em>Client Onboarding</em>, <em>CSG Frameworks</em>, <em>Internal SOPs</em>) and click <strong>Create article</strong>.</li>
-              <li>Set <strong>Control audience access</strong> to <em>Public</em> (client FAQs) or <em>Private / Password-protected</em> (internal SOPs) and click <strong>Publish</strong>.</li>
+              <li><strong>Setup:</strong> Go to <code class="ui-path">Service &gt; Knowledge Base</code>, customize branding/logo, connect a domain under <code class="ui-path">Settings &gt; Domains</code>, and create categories (<em>Client Onboarding</em>, <em>Internal SOPs</em>).</li>
+              <li><strong>Usage:</strong> Click <strong>Create article</strong>, write your guide, set <strong>Control audience access</strong> to <em>Public</em> or <em>Private / Password-protected</em>, and click <strong>Publish</strong>.</li>
             </ol>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Video &amp; Knowledge Base Guides</div>
@@ -969,17 +1109,18 @@
         <article class="howto-card collapsed">
           <div class="howto-header" onclick="toggleCard(this)">
             <div>
-              <span class="howto-kicker">What do I want to do? &bull; Website Chatflows</span>
-              <h4>"I want a website chatbot that separates Companies, Students &amp; Alumni and books calls"</h4>
+              <span class="howto-kicker">HubSpot Menu: Service &gt; Chatflows</span>
+              <h4>Chatflows (Website Chatbot)</h4>
+              <p class="howto-goal"><strong>What do I want to do?</strong> Add a website chatbot that separates Companies, Students &amp; Alumni and books calls.</p>
             </div>
             <span class="toggle-icon">+</span>
           </div>
           <div class="howto-body">
-            <p class="howto-why"><strong>Concept:</strong> A rule-based decision-tree widget on the CSG website that qualifies business leads 24/7 and embeds a Discovery Call booking calendar.</p>
+            <p class="howto-why"><strong>What this tool does:</strong> Runs a rule-based decision-tree widget on the CSG website that qualifies business inquiries 24/7 and embeds a Discovery Call booking calendar.</p>
+            <div class="step-subhead">1. How to Set It Up &amp; 2. How to Use It</div>
             <ol class="howto-steps">
-              <li>Go to <code class="ui-path">Service &gt; Chatflows &gt; Create chatflow &gt; Website &gt; Bot</code>.</li>
-              <li>Add quick-reply buttons: <strong>Hire CSG (Project Inquiry)</strong>, <strong>Join CSG (Student)</strong>, and <strong>Alumni / General</strong>.</li>
-              <li>For <em>Hire CSG</em>, capture <code>First/Last Name</code>, <code>Email</code>, and <code>Company Name</code>, then end with the <strong>Book a meeting</strong> action and publish under <strong>Targeting</strong>.</li>
+              <li><strong>Setup:</strong> Go to <code class="ui-path">Service &gt; Chatflows &gt; Create chatflow &gt; Website &gt; Bot</code> and add quick-reply buttons: <strong>Hire CSG (Project Inquiry)</strong>, <strong>Join CSG (Student)</strong>, and <strong>Alumni / General</strong>.</li>
+              <li><strong>Usage:</strong> For <em>Hire CSG</em>, capture <code>First/Last Name</code>, <code>Email</code>, and <code>Company Name</code>, add the <strong>Book a meeting</strong> action, and set website URLs under <strong>Targeting</strong>.</li>
             </ol>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Video &amp; Knowledge Base Guides</div>
@@ -992,21 +1133,22 @@
           </div>
         </article>
 
-        <!-- CS Card 7: Customer Agent (Breeze AI) -->
+        <!-- CS Card 7: Customer Agent -->
         <article class="howto-card collapsed">
           <div class="howto-header" onclick="toggleCard(this)">
             <div>
-              <span class="howto-kicker">What do I want to do? &bull; Breeze AI Customer Agent</span>
-              <h4>"I want an AI assistant to answer routine questions from our Knowledge Base &amp; PDFs"</h4>
+              <span class="howto-kicker">HubSpot Menu: Service &gt; Customer Agent</span>
+              <h4>Customer Agent (Breeze AI)</h4>
+              <p class="howto-goal"><strong>What do I want to do?</strong> Train an AI assistant on our Knowledge Base &amp; Capabilities Deck to answer routine questions.</p>
             </div>
             <span class="toggle-icon">+</span>
           </div>
           <div class="howto-body">
-            <p class="howto-why"><strong>Concept:</strong> Uses HubSpot Breeze AI (requires HubSpot Credits) to answer common prospect or internal SOP questions 24/7 and hand off complex inquiries to a human lead.</p>
+            <p class="howto-why"><strong>What this tool does:</strong> Uses HubSpot Breeze AI (consumes HubSpot Credits) to answer common prospect or internal SOP questions 24/7 and hand off complex inquiries to a human lead.</p>
+            <div class="step-subhead">1. How to Set It Up &amp; 2. How to Use It</div>
             <ol class="howto-steps">
-              <li>Go to <code class="ui-path">Service &gt; Customer Agent &gt; Get Started</code>, name the bot, and set a professional tone.</li>
-              <li>Under <strong>Data Sources</strong>, connect your published Knowledge Base, CSG website URLs, and approved PDFs (e.g., <em>Capabilities Deck</em>).</li>
-              <li>Set <strong>Handoff</strong> to create a Help Desk ticket for the BD Lead when human help is needed, and review <strong>Unhandled Questions</strong> weekly.</li>
+              <li><strong>Setup:</strong> Go to <code class="ui-path">Service &gt; Customer Agent &gt; Get Started</code>, connect your Knowledge Base, CSG website URLs, and approved PDFs under <strong>Data Sources</strong>, and set human <strong>Handoff</strong> rules.</li>
+              <li><strong>Usage:</strong> Review <strong>Unhandled Questions</strong> weekly and update source documents when CSG services change.</li>
             </ol>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
@@ -1025,17 +1167,18 @@
         <article class="howto-card collapsed">
           <div class="howto-header" onclick="toggleCard(this)">
             <div>
-              <span class="howto-kicker">What do I want to do? &bull; Protected Client Portal</span>
-              <h4>"I want to give active client sponsors a secure login portal to track deliverables"</h4>
+              <span class="howto-kicker">HubSpot Menu: Settings &gt; Inbox &amp; Help Desk &gt; Customer Portal</span>
+              <h4>Customer Portal</h4>
+              <p class="howto-goal"><strong>What do I want to do?</strong> Give active client sponsors a secure login portal to track open deliverables.</p>
             </div>
             <span class="toggle-icon">+</span>
           </div>
           <div class="howto-body">
-            <p class="howto-why"><strong>Concept:</strong> Gives client CEOs/sponsors a live login view of all open project tickets and deliverable threads while keeping internal notes hidden.</p>
+            <p class="howto-why"><strong>What this tool does:</strong> Gives client executives a live login view of all open project tickets and deliverable updates while keeping internal team notes hidden.</p>
+            <div class="step-subhead">1. How to Set It Up &amp; 2. How to Use It</div>
             <ol class="howto-steps">
-              <li>Go to <code class="ui-path">Settings &gt; Inbox &amp; Help Desk &gt; Customer Portal</code>, connect your domain, and apply CSG branding under <strong>Theme</strong>.</li>
-              <li>Under <strong>General &gt; Ticket Permissions</strong>, allow clients to view all tickets associated with their Company (restricted to client-facing pipelines).</li>
-              <li>Open <code class="ui-path">CRM &gt; Contacts</code> on the client sponsor and click <code class="ui-path">Actions &gt; Send customer portal invitation</code>.</li>
+              <li><strong>Setup:</strong> Go to <code class="ui-path">Settings &gt; Inbox &amp; Help Desk &gt; Customer Portal</code>, connect your domain, apply CSG branding under <strong>Theme</strong>, and choose visible ticket pipelines under <strong>General</strong>.</li>
+              <li><strong>Usage:</strong> Open <code class="ui-path">CRM &gt; Contacts</code> on the client sponsor and click <code class="ui-path">Actions &gt; Send customer portal invitation</code>.</li>
             </ol>
             <div class="links-strip">
               <div class="links-strip-title">HubSpot Academy Video Guide</div>
@@ -1045,13 +1188,6 @@
             </div>
           </div>
         </article>
-      </div>
-
-      <!-- Compact End-of-Semester Handover Reminder -->
-      <div class="callout warn">
-        <strong>End-of-Semester Handover Rule (Week 13/14):</strong>
-        (1) Confirm every graduating client has a completed <strong>NPS/Feedback Survey</strong> and pinned final summary note.
-        (2) Reassign the <strong>Service Hub Pro Seat</strong>, <strong>Marketing Core Seats</strong>, and <strong>Sales Seats</strong> from graduating seniors to incoming leads (downgrade seniors to free View-Only access so all history stays intact).
       </div>
     </section>
 
@@ -1090,13 +1226,14 @@
       const snippet = `<article class="howto-card">
   <div class="howto-header" onclick="toggleCard(this)">
     <div>
-      <span class="howto-kicker">What do I want to do?</span>
-      <h4>"[Write specific goal here, e.g., I want to ...]"</h4>
+      <span class="howto-kicker">HubSpot Menu: [Menu &gt; Submenu]</span>
+      <h4>[Tool / Feature Name]</h4>
+      <p class="howto-goal"><strong>What do I want to do?</strong> [Write specific goal here, e.g., Send a campaign or track a deal.]</p>
     </div>
     <span class="toggle-icon">&minus;</span>
   </div>
   <div class="howto-body">
-    <p class="howto-why"><strong>Concept:</strong> [1 short sentence explaining why this matters for CSG.]</p>
+    <p class="howto-why"><strong>What this tool does:</strong> [1 short sentence explaining what this feature does for CSG.]</p>
     <ol class="howto-steps">
       <li>Go to <code class="ui-path">[Menu &gt; Submenu]</code> and click <strong>[Button]</strong>.</li>
       <li>[Enter required fields / configure settings].</li>
