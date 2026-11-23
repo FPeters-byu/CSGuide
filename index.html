@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cougar Strategy Group — HubSpot Onboarding & Playbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #FFFFFF;
+      --bg-hero: #EEF2F6;
+      --bg-subtle: #F8FAFC;
+      --ink-primary: #111827;
+      --ink-secondary: #374151;
+      --ink-muted: #6B7280;
+      --csg-navy: #002E5D;
+      --csg-royal: #0056B3;
+      --csg-royal-light: #EBF3FC;
+      --csg-gold: #B48A1E;
+      --border-strong: #111827;
+      --border-light: #D1D5DB;
+      --border-subtle: #E5E7EB;
+      --warn-bg: #FFFBEB;
+      --warn-ink: #92400E;
+      --success-ink: #065F46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink-primary);
+      background-color: var(--bg-page);
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation */
+    header.top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-strong);
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand-mark { display: flex; flex-direction: column; text-decoration: none; color: var(--ink-primary); }
+    .brand-mark .org { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--csg-navy); }
+    .brand-mark .sub { font-family: 'Playfair Display', Georgia, serif; font-size: 16px; font-weight: 600; }
+    .stepper-nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .step-link {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px;
+      text-decoration: none; color: var(--ink-secondary); font-size: 13px; font-weight: 500;
+      border-radius: 999px; transition: all 0.18s ease; border: 1px solid transparent;
+    }
+    .step-link .dot {
+      width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--ink-muted);
+      display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;
+    }
+    .step-link:hover { color: var(--csg-royal); background: var(--bg-subtle); }
+    .step-link.active { color: var(--csg-royal); background: var(--csg-royal-light); border-color: rgba(0, 86, 179, 0.25); font-weight: 600; }
+    .step-link.active .dot { background: var(--csg-royal); border-color: var(--csg-royal); color: #FFFFFF; }
+    .step-connector { width: 16px; height: 1px; background: var(--border-light); }
+
+    /* Hero */
+    .hero { background-color: var(--bg-hero); border-bottom: 1px solid var(--border-strong); }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; padding: 48px 24px 44px;
+      display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 28px; align-items: center;
+    }
+    .hero-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--csg-royal); margin-bottom: 10px; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(28px, 3.8vw, 40px); line-height: 1.15; font-weight: 600; margin-bottom: 12px; }
+    .hero p.lead { font-size: 15.5px; color: var(--ink-secondary); max-width: 600px; margin-bottom: 14px; }
+    .hero-closing { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; font-weight: 600; color: var(--csg-royal); }
+    .hero-circles { display: flex; align-items: center; justify-content: center; }
+    .hero-circles svg { width: 200px; height: 200px; opacity: 0.85; }
+
+    /* Main Content */
+    main.content-wrap { max-width: 1100px; margin: 0 auto; padding: 36px 24px 88px; }
+    section.page-section { display: none; animation: fadeIn 0.2s ease; }
+    section.page-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .section-header {
+      border-bottom: 1.5px solid var(--border-strong); padding-bottom: 14px; margin-bottom: 28px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;
+    }
+    .section-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--csg-royal); display: block; margin-bottom: 4px; }
+    .section-header h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; }
+    .section-subtitle { font-size: 14px; color: var(--ink-muted); max-width: 480px; }
+
+    .part-block { margin-bottom: 42px; }
+    .part-heading {
+      border-top: 1px solid var(--border-strong); padding-top: 12px; margin-bottom: 18px;
+      display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px;
+    }
+    .part-heading h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 600; }
+    .part-heading h3 span.blue { color: var(--csg-royal); }
+    .part-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .editorial-col { border-top: 1px solid var(--border-strong); padding-top: 12px; }
+    .editorial-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .editorial-col.blue-accent h4 { color: var(--csg-royal); }
+    .editorial-col p, .editorial-col li { font-size: 14px; color: var(--ink-secondary); }
+
+    /* Overview & Callout Boxes */
+    .seat-overview-box {
+      background: var(--bg-hero);
+      border: 1px solid var(--border-strong);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+    .seat-overview-box h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 19px;
+      margin-bottom: 8px;
+      color: var(--csg-navy);
+    }
+    .seat-overview-box ul {
+      padding-left: 18px;
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 24px;
+    }
+    .seat-overview-box li { font-size: 14px; color: var(--ink-secondary); }
+
+    .callout { background: var(--bg-subtle); border-left: 3px solid var(--csg-royal); padding: 14px 18px; margin: 16px 0; font-size: 14px; color: var(--ink-secondary); }
+    .callout.warn { background: var(--warn-bg); border-left-color: var(--csg-gold); color: var(--warn-ink); }
+    .callout strong { color: var(--ink-primary); }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border-light); margin: 14px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left; }
+    thead { background: var(--bg-hero); border-bottom: 1.5px solid var(--border-strong); }
+    th { padding: 11px 14px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 11px 14px; border-bottom: 1px solid var(--border-subtle); color: var(--ink-secondary); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+
+    /* Buttons & Search */
+    .btn-outline { padding: 8px 14px; font-size: 13px; font-weight: 600; background: #FFFFFF; color: var(--ink-primary); border: 1px solid var(--border-strong); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-outline:hover { background: var(--ink-primary); color: #FFFFFF; }
+    .btn-primary {
+      padding: 9px 16px; font-size: 13px; font-weight: 600; background: var(--csg-royal); color: #FFFFFF;
+      border: 1px solid var(--csg-royal); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-primary:hover { background: var(--csg-navy); }
+
+    /* "What do I want to do?" Action Cards */
+    .howto-card {
+      border: 1px solid var(--border-strong);
+      background: #FFFFFF;
+      margin-bottom: 20px;
+    }
+    .howto-header {
+      padding: 15px 20px;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .howto-header:hover { background: var(--bg-hero); }
+    .howto-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--csg-royal);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .howto-header h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .toggle-icon { font-size: 18px; font-weight: 700; color: var(--csg-royal); }
+    .howto-body { padding: 18px 20px 20px; display: block; }
+    .howto-card.collapsed .howto-body { display: none; }
+    .howto-card.collapsed .howto-header { border-bottom: none; }
+
+    .howto-why {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .howto-steps {
+      padding-left: 20px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: var(--ink-primary);
+    }
+    .howto-steps li { margin-bottom: 6px; }
+
+    code.ui-path {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12.5px; background: #F1F5F9; padding: 1px 6px; border: 1px solid #E2E8F0; color: var(--csg-navy); font-weight: 600;
+    }
+
+    /* Links & Video Strip */
+    .links-strip {
+      background: var(--csg-royal-light);
+      border: 1px solid rgba(0, 86, 179, 0.22);
+      padding: 12px 16px;
+    }
+    .links-strip-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--csg-navy);
+      margin-bottom: 8px;
+    }
+    .links-strip ul {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .links-strip li {
+      font-size: 13.5px;
+      color: var(--ink-primary);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .links-strip a {
+      color: var(--csg-royal);
+      font-weight: 600;
+      text-decoration: underline;
+      word-break: break-word;
+    }
+    .links-strip a:hover { color: var(--csg-navy); }
+    .badge {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 6px;
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 86, 179, 0.3);
+      color: var(--csg-navy);
+      white-space: nowrap;
+    }
+    .badge.video {
+      background: var(--csg-navy);
+      color: #FFFFFF;
+      border-color: var(--csg-navy);
+    }
+
+    .edit-bar {
+      margin-top: 24px;
+      padding: 14px 18px;
+      border: 1px dashed var(--csg-royal);
+      background: var(--bg-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+    }
+
+    footer.editorial-footer {
+      border-top: 1.5px solid var(--border-strong);
+      background: var(--bg-hero);
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 820px) {
+      .hero-inner, .grid-4, .grid-2, .seat-overview-box ul { grid-template-columns: 1fr; }
+      .hero-circles, .step-connector { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <a href="#home" class="brand-mark" onclick="navigateTo('home')">
+        <span class="org">Cougar Strategy Group</span>
+        <span class="sub">HubSpot Quick-Start Playbook</span>
+      </a>
+      <nav class="stepper-nav" aria-label="Primary sections">
+        <a href="#home" class="step-link active" data-nav="home" onclick="navigateTo('home')">
+          <span class="dot">1</span> Start Here &amp; Rules
+        </a>
+        <span class="step-connector"></span>
+        <a href="#marketing" class="step-link" data-nav="marketing" onclick="navigateTo('marketing')">
+          <span class="dot">2</span> Marketing Hub
+        </a>
+        <span class="step-connector"></span>
+        <a href="#sales" class="step-link" data-nav="sales" onclick="navigateTo('sales')">
+          <span class="dot">3</span> Sales Hub
+        </a>
+        <span class="step-connector"></span>
+        <a href="#service" class="step-link" data-nav="service" onclick="navigateTo('service')">
+          <span class="dot">4</span> Service Hub (CS)
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">CSG HubSpot Onboarding &bull; Built for First-Time Users</div>
+        <h1>Find What You Need in 30 Seconds</h1>
+        <p class="lead">
+          Opening HubSpot for the first time? Pick your hub above, find <strong>"What do I want to do?"</strong>, follow the short steps, and use the linked HubSpot Academy videos &amp; guides to dig deeper.
+        </p>
+        <div class="hero-closing">One system the team runs on.</div>
+      </div>
+      <div class="hero-circles" aria-hidden="true">
+        <svg viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="130" cy="130" r="118" stroke="#002E5D" stroke-opacity="0.22" stroke-width="1.2"/>
+          <circle cx="130" cy="130" r="88" stroke="#0056B3" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 4"/>
+          <circle cx="130" cy="130" r="56" stroke="#002E5D" stroke-opacity="0.25" stroke-width="1.2"/>
+          <line x1="12" y1="130" x2="248" y2="130" stroke="#0056B3" stroke-opacity="0.2" stroke-width="1"/>
+          <line x1="130" y1="12" x2="130" y2="248" stroke="#0056B3" stroke-opacity="0.2" stroke-width="1"/>
+          <circle cx="130" cy="42" r="5" fill="#0056B3"/>
+          <circle cx="218" cy="130" r="5" fill="#002E5D"/>
+          <circle cx="130" cy="218" r="5" fill="#0056B3"/>
+          <circle cx="42" cy="130" r="5" fill="#002E5D"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <main class="content-wrap">
+
+    <!-- =====================================================================
+         PAGE 1: INTRO / RULES & LICENSES (#home)
+    ====================================================================== -->
+    <section id="home" class="page-section active">
+      <div class="section-header">
+        <div>
+          <span class="section-num">Section 01 &bull; Overview &amp; Ground Rules</span>
+          <h2>HubSpot Foundations &amp; CSG Licenses</h2>
+        </div>
+        <div class="section-subtitle">
+          Read this 2-minute overview first so you know what each seat does and how CSG stores data.
+        </div>
+      </div>
+
+      <!-- 1. Why HubSpot Matters -->
+      <div class="part-block">
+        <div class="part-heading">
+          <h3>Why HubSpot Matters <span class="blue">for CSG</span></h3>
+          <span class="part-tag">4 Core Goals</span>
+        </div>
+        <div class="grid-4">
+          <div class="editorial-col">
+            <h4>1. Justify ROI</h4>
+            <p>Proves software value and active pipeline to Faculty Advisor Paul Godfrey and leadership.</p>
+          </div>
+          <div class="editorial-col blue-accent">
+            <h4>2. Stop Brain Drain</h4>
+            <p>Keeps client history, notes, and contacts safe when student teams rotate every semester.</p>
+          </div>
+          <div class="editorial-col">
+            <h4>3. Dependable Pipeline</h4>
+            <p>Makes CSG easier to understand, recommend, and hire through structured lead capture.</p>
+          </div>
+          <div class="editorial-col blue-accent">
+            <h4>4. Connected Teams</h4>
+            <p>Links Marketing, Sales, and Customer Success on one shared client record.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Licenses & What Each One Does -->
+      <div class="part-block">
+        <div class="part-heading">
+          <h3>CSG Licenses <span class="blue">&amp; What Each Seat Does</span></h3>
+          <span class="part-tag">Who Gets Access &amp; Capabilities</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:24%;">Hub / License Tier</th>
+                <th style="width:26%;">Who Uses It</th>
+                <th style="width:50%;">What It Lets You Do</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Marketing Hub Professional</strong></td>
+                <td>3 Core Seats + 2,000 Marketing Contacts</td>
+                <td>Build website forms, automated emails, campaigns, LinkedIn scheduling, SEO/AEO, and contact lists (Clients vs. Alumni).</td>
+              </tr>
+              <tr>
+                <td><strong>Sales Hub Professional</strong></td>
+                <td>Sales Seats (BD &amp; Sales Leads)</td>
+                <td>Manage deal pipelines, stage gates, calendar booking links, proposal/PDF tracking, and outbound email sequences.</td>
+              </tr>
+              <tr>
+                <td><strong>Service Hub Professional</strong></td>
+                <td>1 Service Seat (Team Customer Success Lead + Operations Director)</td>
+                <td>Maintain past &amp; active client/project records, send automated NPS/CSAT surveys, import historical survey CSVs, run client outreach via Help Desk, and report client health.</td>
+              </tr>
+              <tr>
+                <td><strong>Free View-Only / Core Access</strong></td>
+                <td>All Remaining Student Consultants</td>
+                <td>View all CRM contacts, companies, deals, pinned call notes, survey results, and dashboards at zero extra seat cost.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <strong>Important Limit — 2,000 Marketing Contacts:</strong> Never mark student applicants or inactive alumni as <em>Marketing Contacts</em>. Keep them as <em>Non-Marketing Contacts</em> (<code class="ui-path">Actions &gt; Set as non-marketing contacts</code>) so CSG never pays extra fees.
+        </div>
+      </div>
+
+      <!-- 3. The Golden Data Rule -->
+      <div class="part-block">
+        <div class="part-heading">
+          <h3>The Golden Data Rule: <span class="blue">4 Linked CRM Objects</span></h3>
+          <span class="part-tag">How Information Connects</span>
+        </div>
+        <div class="grid-4">
+          <div class="editorial-col blue-accent">
+            <h4>Contacts (People)</h4>
+            <p>Individual people (CEOs, VPs, Alumni) tracked by email and tagged via <strong>Contact Type</strong> (<em>Prospective Client, Active Client, Past Client, CSG Alumni</em>).</p>
+          </div>
+          <div class="editorial-col">
+            <h4>Companies (Clients)</h4>
+            <p>The client business (e.g., <em>Alcomy</em>). Holds the <strong>Client Health Score</strong> and links all people, projects, and notes together.</p>
+          </div>
+          <div class="editorial-col blue-accent">
+            <h4>Deals (Projects)</h4>
+            <p>Each consulting engagement from Discovery Call to <em>Closed Won</em> (scope, budget, semester, and final deliverables).</p>
+          </div>
+          <div class="editorial-col">
+            <h4>Tickets (Outreach &amp; Support)</h4>
+            <p>Tracks client follow-ups, data requests, and scope questions inside the shared Help Desk inbox.</p>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:18px;">
+          <strong>2 Golden Rules for Every Consultant:</strong>
+          (1) Always check if a Contact/Company already exists before creating a new one (email address is the unique ID).
+          (2) After every client call, write a 3-bullet summary in <strong>Notes</strong> and click <strong>Pin</strong> so the next semester sees it immediately.
+        </div>
+
+        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="#marketing" class="btn-primary" onclick="navigateTo('marketing')">2. Marketing Hub How-Tos &rarr;</a>
+          <a href="#sales" class="btn-primary" onclick="navigateTo('sales')">3. Sales Hub How-Tos &rarr;</a>
+          <a href="#service" class="btn-primary" onclick="navigateTo('service')">4. Service Hub (Customer Success) &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 2: MARKETING HUB (#marketing)
+    ====================================================================== -->
+    <section id="marketing" class="page-section">
+      <div class="section-header">
+        <div>
+          <span class="section-num">Section 02 &bull; Inbound, Campaigns &amp; Brand Proof</span>
+          <h2>Marketing Hub How-Tos</h2>
+        </div>
+        <div class="section-subtitle">
+          Pick what you want to do, follow the short steps, and use the links to learn more.
+        </div>
+      </div>
+
+      <!-- Quick Overview of Marketing Seats -->
+      <div class="seat-overview-box">
+        <h3>What Your Marketing Seats Let You Do (Marketing Hub Pro)</h3>
+        <p style="font-size:14px; color:var(--ink-secondary);">
+          CSG has <strong>3 Marketing Core Seats</strong> and <strong>2,000 Marketing Contacts</strong>. Here is what you can run:
+        </p>
+        <ul>
+          <li><strong>Forms &amp; Landing Pages:</strong> Capture inbound project leads directly into the CRM without manual typing.</li>
+          <li><strong>Email &amp; Automated Workflows:</strong> Send branded CSG newsletters and auto-send our Capabilities Deck after form fills.</li>
+          <li><strong>Marketing Studio &amp; Campaigns:</strong> Plan multi-channel campaigns (email + social + ads) in one place with Breeze AI.</li>
+          <li><strong>Social, SEO &amp; AEO:</strong> Schedule LinkedIn posts and optimize our site so Google and AI tools (ChatGPT/Gemini) recommend CSG.</li>
+        </ul>
+      </div>
+
+      <!-- How-To Card 1 -->
+      <article class="howto-card">
+        <div class="howto-header" onclick="toggleCard(this)">
+          <div>
+            <span class="howto-kicker">What do I want to do?</span>
+            <h4>"I want to run a marketing campaign across email and LinkedIn"</h4>
+          </div>
+          <span class="toggle-icon">&minus;</span>
+        </div>
+        <div class="howto-body">
+          <p class="howto-why"><strong>Concept:</strong> Group all emails, forms, social posts, and landing pages under one Campaign so CSG can track how many real leads each effort generated.</p>
+          <ol class="howto-steps">
+            <li>Go to <code class="ui-path">Marketing &gt; Campaigns</code> (or <code class="ui-path">Marketing &gt; Marketing Studio</code>) and click <strong>Create campaign</strong>.</li>
+            <li>Name it clearly by semester and goal (e.g., <em>Fall 2026 – Tech Startup Outreach</em>) and set your target audience.</li>
+            <li>Attach your campaign assets (forms, emails, LinkedIn posts) using the <strong>Add assets</strong> button.</li>
+            <li>Review influenced contacts and new deals directly inside the campaign dashboard.</li>
+          </ol>
+          <div class="links-strip">
+            <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+            <ul>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/campaigns/create-campaigns" target="_blank" rel="noopener">Create Campaigns in HubSpot</a></li>
+              <li><span class="badge video">Academy</span> <a href="https://academy.hubspot.com/courses/hubspot-marketing-software" target="_blank" rel="noopener">HubSpot Marketing Software Certification (Campaigns &amp; Studio)</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- How-To Card 2 -->
+      <article class="howto-card">
+        <div class="howto-header" onclick="toggleCard(this)">
+          <div>
+            <span class="howto-kicker">What do I want to do?</span>
+            <h4>"I want to build a website form, email, or automated follow-up"</h4>
+          </div>
+          <span class="toggle-icon">&minus;</span>
+        </div>
+        <div class="howto-body">
+          <p class="howto-why"><strong>Concept:</strong> Replace static email links with HubSpot forms that auto-save leads and immediately send CSG's Capabilities Deck.</p>
+          <ol class="howto-steps">
+            <li><strong>Build Form:</strong> Go to <code class="ui-path">Marketing &gt; Forms &gt; Create form</code>, include <em>First Name, Last Name, Email, Company Name, Project Scope</em>, and publish.</li>
+            <li><strong>Build Email:</strong> Go to <code class="ui-path">Marketing &gt; Email &gt; Create email</code> (choose <em>Automated</em> if triggered by a form) and add your copy + Capabilities PDF link.</li>
+            <li><strong>Connect Automation:</strong> Go to <code class="ui-path">Automations &gt; Workflows</code> &rarr; set trigger <em>Form submission = Website Inquiry</em> &rarr; action <em>Send email</em> + <em>Notify BD Lead</em>.</li>
+          </ol>
+          <div class="links-strip">
+            <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+            <ul>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/forms/create-forms" target="_blank" rel="noopener">Create and Embed HubSpot Forms</a></li>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/marketing-email/create-marketing-emails-in-the-drag-and-drop-email-editor" target="_blank" rel="noopener">Create Marketing Emails in HubSpot</a></li>
+              <li><span class="badge video">Academy</span> <a href="https://academy.hubspot.com/lessons/creating-forms-in-hubspot" target="_blank" rel="noopener">Academy Lesson: Creating Forms in HubSpot</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- How-To Card 3 -->
+      <article class="howto-card">
+        <div class="howto-header" onclick="toggleCard(this)">
+          <div>
+            <span class="howto-kicker">What do I want to do?</span>
+            <h4>"I want to segment Alumni vs. Clients (without exceeding 2,000 contacts)"</h4>
+          </div>
+          <span class="toggle-icon">&minus;</span>
+        </div>
+        <div class="howto-body">
+          <p class="howto-why"><strong>Concept:</strong> Active lists update automatically based on our custom <code>Contact Type</code> property so we never email the wrong group.</p>
+          <ol class="howto-steps">
+            <li>Go to <code class="ui-path">CRM &gt; Lists &gt; Create list</code> and select <strong>Active list</strong>.</li>
+            <li>Filter by <code class="ui-path">Contact Type is any of CSG Alumni</code> (or <em>Prospective Client / Past Client</em>).</li>
+            <li>For student applicants or non-emailed contacts, select them in <code class="ui-path">CRM &gt; Contacts</code> and click <code class="ui-path">More &gt; Set as non-marketing contacts</code>.</li>
+          </ol>
+          <div class="links-strip">
+            <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+            <ul>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/lists/create-active-or-static-lists" target="_blank" rel="noopener">Create Active or Static Lists in HubSpot</a></li>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/records/set-contacts-as-non-marketing" target="_blank" rel="noopener">Set Contacts as Non-Marketing Contacts</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- How-To Card 4 -->
+      <article class="howto-card">
+        <div class="howto-header" onclick="toggleCard(this)">
+          <div>
+            <span class="howto-kicker">What do I want to do?</span>
+            <h4>"I want to schedule LinkedIn posts &amp; improve Google / AI search visibility"</h4>
+          </div>
+          <span class="toggle-icon">&minus;</span>
+        </div>
+        <div class="howto-body">
+          <p class="howto-why"><strong>Concept:</strong> Schedule posts directly from HubSpot and check SEO / AEO (Answer Engine Optimization) recommendations so ChatGPT, Gemini, and Google surface CSG.</p>
+          <ol class="howto-steps">
+            <li><strong>Social:</strong> Go to <code class="ui-path">Marketing &gt; Social &gt; Create social post</code>, select CSG LinkedIn, write copy, and schedule.</li>
+            <li><strong>SEO &amp; AEO:</strong> Go to <code class="ui-path">Content &gt; SEO</code> (or <em>AEO</em>) to review site audit recommendations and target consulting keywords.</li>
+          </ol>
+          <div class="links-strip">
+            <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+            <ul>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/social/create-and-publish-social-posts" target="_blank" rel="noopener">Create and Publish Social Posts in HubSpot</a></li>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/seo/view-seo-recommendations-in-hubspot" target="_blank" rel="noopener">View SEO Recommendations in HubSpot</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <div class="edit-bar">
+        <span><strong>Marketing Team Editing Tip:</strong> Want to add another Marketing How-To card? Copy the clean card template and paste it above.</span>
+        <div>
+          <button class="btn-outline" onclick="copySimpleCard('Marketing')">Copy "What do I want to do?" Card HTML</button>
+          <span id="copy-msg-Marketing" style="margin-left:8px; font-weight:600; color:var(--success-ink);"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 3: SALES HUB (#sales)
+    ====================================================================== -->
+    <section id="sales" class="page-section">
+      <div class="section-header">
+        <div>
+          <span class="section-num">Section 03 &bull; Deals, Discovery Calls &amp; Proposals</span>
+          <h2>Sales Hub How-Tos</h2>
+        </div>
+        <div class="section-subtitle">
+          Pick what you want to do, follow the short steps, and use the links to learn more.
+        </div>
+      </div>
+
+      <!-- Quick Overview of Sales Seats -->
+      <div class="seat-overview-box">
+        <h3>What Your Sales Seats Let You Do (Sales Hub Pro)</h3>
+        <p style="font-size:14px; color:var(--ink-secondary);">
+          Sales Seats give Business Development and Sales Leads everything needed to turn prospects into signed engagements:
+        </p>
+        <ul>
+          <li><strong>Deal Pipelines &amp; Stage Gates:</strong> Track every potential project from Discovery Call to <em>Closed Won</em>.</li>
+          <li><strong>Meeting Scheduling Links:</strong> Let prospects book 20-minute strategy calls straight onto your calendar.</li>
+          <li><strong>Document &amp; Proposal Tracking:</strong> Upload Capabilities Decks/Proposals and get alerts when clients open them.</li>
+          <li><strong>Outbound Sequences &amp; Tasks:</strong> Automate multi-step follow-up emails and never drop a warm lead.</li>
+        </ul>
+      </div>
+
+      <!-- Sales Card 1 -->
+      <article class="howto-card">
+        <div class="howto-header" onclick="toggleCard(this)">
+          <div>
+            <span class="howto-kicker">What do I want to do?</span>
+            <h4>"I want to log a new prospect and track a deal through our pipeline"</h4>
+          </div>
+          <span class="toggle-icon">&minus;</span>
+        </div>
+        <div class="howto-body">
+          <p class="howto-why"><strong>Concept:</strong> Every potential client project must be a Deal linked to a Company and Contact so leadership sees accurate semester pipeline.</p>
+          <ol class="howto-steps">
+            <li>Go to <code class="ui-path">CRM &gt; Deals</code> and click <strong>Create deal</strong> (top right).</li>
+            <li>Name it <code class="ui-path">[Company Name] – [Semester/Scope]</code>, select the CSG Pipeline, enter the deal amount, and set the expected close date.</li>
+            <li>Link the <strong>Company</strong> and decision-maker <strong>Contact</strong> under Associations, then drag the deal card across stages as it progresses.</li>
+          </ol>
+          <div class="links-strip">
+            <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+            <ul>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/deals/create-deals" target="_blank" rel="noopener">Create and Manage Deals in HubSpot</a></li>
+              <li><span class="badge video">Academy</span> <a href="https://academy.hubspot.com/courses/hubspot-sales-software" target="_blank" rel="noopener">HubSpot Sales Hub Software Certification (Pipelines &amp; Deals)</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sales Card 2 -->
+      <article class="howto-card">
+        <div class="howto-header" onclick="toggleCard(this)">
+          <div>
+            <span class="howto-kicker">What do I want to do?</span>
+            <h4>"I want a prospect to book a Discovery Call without back-and-forth emails"</h4>
+          </div>
+          <span class="toggle-icon">&minus;</span>
+        </div>
+        <div class="howto-body">
+          <p class="howto-why"><strong>Concept:</strong> HubSpot Meeting Links sync with your calendar (replaces Calendly) and automatically log booked calls onto the Contact record.</p>
+          <ol class="howto-steps">
+            <li>Go to <code class="ui-path">Library &gt; Meetings</code> (or <code class="ui-path">Sales &gt; Meetings</code>) and click <strong>Create scheduling page</strong>.</li>
+            <li>Set duration to <strong>20 or 30 minutes</strong>, connect Zoom/Teams, and set your available weekly hours.</li>
+            <li>Copy your booking link and paste it into email signatures, outreach emails, and the website chatflow.</li>
+          </ol>
+          <div class="links-strip">
+            <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+            <ul>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/meetings-tool/create-and-edit-scheduling-pages" target="_blank" rel="noopener">Create and Edit HubSpot Meeting Scheduling Pages</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sales Card 3 -->
+      <article class="howto-card">
+        <div class="howto-header" onclick="toggleCard(this)">
+          <div>
+            <span class="howto-kicker">What do I want to do?</span>
+            <h4>"I want to send a Capabilities Deck or Proposal and see when clients read it"</h4>
+          </div>
+          <span class="toggle-icon">&minus;</span>
+        </div>
+        <div class="howto-body">
+          <p class="howto-why"><strong>Concept:</strong> Uploading PDFs to HubSpot Documents gives you real-time alerts when a prospect opens your deck and shows which pages they read longest.</p>
+          <ol class="howto-steps">
+            <li>Go to <code class="ui-path">Library &gt; Documents</code> and click <strong>Upload document</strong> (upload the CSG Capabilities Deck or Scope Proposal PDF).</li>
+            <li>Click <strong>Share</strong> to generate a trackable link (require email address so you know who viewed it).</li>
+            <li>Follow up within 24 hours of receiving an open notification.</li>
+          </ol>
+          <div class="links-strip">
+            <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+            <ul>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/documents/use-documents" target="_blank" rel="noopener">Upload and Track Sales Documents in HubSpot</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sales Card 4 -->
+      <article class="howto-card">
+        <div class="howto-header" onclick="toggleCard(this)">
+          <div>
+            <span class="howto-kicker">What do I want to do?</span>
+            <h4>"I want to send automated outbound follow-up sequences to leads"</h4>
+          </div>
+          <span class="toggle-icon">&minus;</span>
+        </div>
+        <div class="howto-body">
+          <p class="howto-why"><strong>Concept:</strong> Sequences send a timed series of 1-to-1 follow-up emails and task reminders—and automatically stop the moment the prospect replies.</p>
+          <ol class="howto-steps">
+            <li>Go to <code class="ui-path">Automations &gt; Sequences</code> and click <strong>Create sequence</strong>.</li>
+            <li>Add 3–4 short, personalized email steps spaced 3 business days apart + a LinkedIn/call task reminder.</li>
+            <li>Open any Contact record and click <strong>Enroll in sequence</strong>.</li>
+          </ol>
+          <div class="links-strip">
+            <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+            <ul>
+              <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/sequences/create-and-edit-sequences" target="_blank" rel="noopener">Create and Edit Sales Sequences</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <div class="edit-bar">
+        <span><strong>Sales Team Editing Tip:</strong> Want to add another Sales How-To card? Copy the clean card template and paste it above.</span>
+        <div>
+          <button class="btn-outline" onclick="copySimpleCard('Sales')">Copy "What do I want to do?" Card HTML</button>
+          <span id="copy-msg-Sales" style="margin-left:8px; font-weight:600; color:var(--success-ink);"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 4: SERVICE HUB PRO — FOR CUSTOMER SUCCESS LEAD (#service)
+    ====================================================================== -->
+    <section id="service" class="page-section">
+      <div class="section-header">
+        <div>
+          <span class="section-num">Section 04 &bull; Customer Success &amp; Past-Client Operations</span>
+          <h2>Service Hub Pro Playbook</h2>
+        </div>
+        <div class="section-subtitle">
+          Written for each team's <strong>Customer Success Lead</strong> &amp; the <strong>Operations Director</strong>.
+        </div>
+      </div>
+
+      <!-- Role-Specific Overview Box -->
+      <div class="seat-overview-box">
+        <h3>Your Role: Customer Success Lead + Operations Director</h3>
+        <p style="font-size:14px; color:var(--ink-secondary);">
+          Going forward, <strong>each marketing team has one dedicated Customer Success person</strong> working directly with the <strong>Operations Director</strong>. With the <strong>Service Hub Pro Seat</strong>, your job is to keep our past and active client database alive, run client outreach, and collect NPS &amp; testimonial proof points:
+        </p>
+        <ul>
+          <li><strong>Past &amp; Active Client Database:</strong> Collect, verify, and update all past clients, projects (Deals), and contacts with the Operations Director.</li>
+          <li><strong>NPS &amp; Feedback Surveys:</strong> Send automated post-project surveys, import historical survey CSVs, and capture client quotes.</li>
+          <li><strong>Client Outreach &amp; Follow-Ups:</strong> Use Help Desk / Shared Inbox to run structured check-ins, testimonial requests, and repeat-project outreach.</li>
+          <li><strong>Satisfaction Reporting:</strong> Pull NPS/CSAT numbers and client health trends for Marketing case studies and Paul Godfrey.</li>
+        </ul>
+
+        <!-- Starter HubSpot Academy Videos -->
+        <div class="links-strip" style="margin-top:14px; background:#FFFFFF;">
+          <div class="links-strip-title">Start Here: HubSpot Academy Video Walkthroughs for Service Hub</div>
+          <ul>
+            <li>
+              <span class="badge video">Academy Lesson (~22 min)</span>
+              <a href="https://academy.hubspot.com/lessons/foundations-of-hubspot-service-hub-starter" target="_blank" rel="noopener">Foundations of HubSpot Service Hub Starter (Adriti Gulati)</a> — best starting point for Help Desk, team inbox, tickets, and prioritization
+            </li>
+            <li>
+              <span class="badge video">Full Video Playlist</span>
+              <a href="https://app-na2.hubspot.com/academy/241871229/saved-items/playlists/126368476?ruid=169081879" target="_blank" rel="noopener">Complete 10-Step CSG Service Hub Learning Playlist</a> — guided first-steps videos across all Service Hub tools
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CORE CUSTOMER SUCCESS PLAYBOOKS (1–4) -->
+      <div class="part-block">
+        <div class="part-heading">
+          <h3>Core Customer Success Workflows <span class="blue">(Start Here First)</span></h3>
+          <span class="part-tag">What do I want to do? &rarr; Short Steps &rarr; Links</span>
+        </div>
+
+        <!-- CS Card 1: Past Clients, Projects & Contacts + Account Health -->
+        <article class="howto-card">
+          <div class="howto-header" onclick="toggleCard(this)">
+            <div>
+              <span class="howto-kicker">What do I want to do? &bull; Database &amp; Account Health</span>
+              <h4>"I want to collect &amp; update all past clients, projects, and contacts with the Operations Director"</h4>
+            </div>
+            <span class="toggle-icon">&minus;</span>
+          </div>
+          <div class="howto-body">
+            <p class="howto-why">
+              <strong>Why &amp; Concept:</strong> Prevents semester brain drain by keeping every past and active client's contacts, project history, and relationship health (<em>Green / Yellow / Red</em>) accurate in one place. <em>(Note: On Service Hub Pro, we track health via custom Company properties + Saved Views).</em>
+            </p>
+            <ol class="howto-steps">
+              <li><strong>Verify Properties (One-Time Setup):</strong> Under <code class="ui-path">Settings &gt; Properties &gt; Company Properties</code>, ensure <strong>CSG Client Health Score</strong> (<em>Green - On Track, Yellow - At Risk, Red - Critical</em>) and <strong>Project Milestone Status</strong> (<em>Kickoff Completed, Phase 1 Delivered, Phase 2 Delivered, Final Presentation Delivered</em>) exist.</li>
+              <li><strong>Audit &amp; Update Past Clients:</strong> Open <code class="ui-path">CRM &gt; Companies</code> with the Operations Director. Check each past/active client record to confirm key Contacts (tagged <code class="ui-path">Contact Type = Past Client</code> or <code class="ui-path">Active Client</code>) and past project Deals are linked.</li>
+              <li><strong>Log Status &amp; Pin Notes:</strong> Update the client's <strong>Health Score</strong> and <strong>Milestone Status</strong>, then write a 3-bullet summary in <strong>Notes</strong> and click <strong>Pin</strong> so it stays at the top.</li>
+              <li><strong>Monitor Risk View:</strong> Open your saved view <strong>Active / At-Risk CSG Clients</strong> (filtered by <code>Health Score = Yellow or Red</code>) and assign a follow-up <strong>Task</strong> to the Operations Director if a client needs attention.</li>
+            </ol>
+            <div class="links-strip">
+              <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
+              <ul>
+                <li><span class="badge video">Short Video (~2.5 min)</span> <a href="https://app-na2.hubspot.com/academy/241871229/shortvideo/7261070?ruid=169081879" target="_blank" rel="noopener">What is the Customer Success Workspace? (Adriti Gulati)</a> — overview of customers, services, tasks, and feed tabs</li>
+                <li><span class="badge video">Academy Lesson</span> <a href="https://academy.hubspot.com/lessons/setting-up-the-customer-success-workspace" target="_blank" rel="noopener">Setting up the Customer Success Workspace (Adriti Gulati)</a> — creating custom health scores to spot risks early</li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/customer-success/set-up-and-manage-the-customer-success-workspace" target="_blank" rel="noopener">Set Up and Manage the Customer Success Workspace</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/service-tools/topics?hubs_content=knowledge.hubspot.com/service-tools&hubs_content-cta=kb-see-more#customer-success" target="_blank" rel="noopener">Customer Success HubSpot Knowledge Base (All Topics)</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- CS Card 2: NPS & Feedback Surveys (+ Historical CSV Import) -->
+        <article class="howto-card">
+          <div class="howto-header" onclick="toggleCard(this)">
+            <div>
+              <span class="howto-kicker">What do I want to do? &bull; NPS, CSAT &amp; Past Survey Import</span>
+              <h4>"I want to send NPS / feedback surveys to clients &amp; import past survey data"</h4>
+            </div>
+            <span class="toggle-icon">&minus;</span>
+          </div>
+          <div class="howto-body">
+            <p class="howto-why">
+              <strong>Why &amp; Concept:</strong> Centralizes client satisfaction scores (<strong>CSAT</strong> &amp; <strong>NPS</strong>) and quotable testimonials on Contact/Company records so Marketing has real proof points for case studies and the website.
+            </p>
+            <ol class="howto-steps">
+              <li><strong>Create Automated Survey:</strong> Go to <code class="ui-path">Service &gt; Feedback Surveys &gt; Create survey</code>, pick <strong>NPS</strong> (0–10 recommendation scale) or <strong>CSAT</strong>, add the CSG logo, and select <strong>Email</strong> or <strong>Shareable link</strong>.</li>
+              <li><strong>Automate Post-Project Send &amp; Testimonials:</strong> Set the survey to send automatically <strong>3 days after a Deal moves to Closed Won / Completed</strong> (or at semester end). Add a workflow: if <strong>NPS &ge; 9</strong>, send a thank-you email asking for a website testimonial quote.</li>
+              <li><strong>Import Past Surveys (Excel / Google Forms / Qualtrics):</strong> Create custom Contact properties (<code class="ui-path">Historical NPS Score</code>, <code class="ui-path">Past Project CSAT Rating</code>, <code class="ui-path">Client Feedback &amp; Testimonial Quote</code>, <code class="ui-path">Survey Completion Date</code>), save your spreadsheet as <strong>.csv (UTF-8)</strong> with an <code>Email</code> column, and upload via <code class="ui-path">CRM &gt; Contacts &gt; Import</code>.</li>
+            </ol>
+            <div class="links-strip">
+              <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
+              <ul>
+                <li><span class="badge video">Academy Lesson</span> <a href="https://academy.hubspot.com/lessons/hubspot-customer-feedback-tutorial" target="_blank" rel="noopener">Setting up Customer Feedback (Adriti Gulati)</a> — NPS, CES, CSAT, custom surveys, and turning happy clients into advocates</li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/customer-feedback/create-a-custom-survey" target="_blank" rel="noopener">Create a Custom Survey</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/customer-feedback/how-do-i-send-a-customer-support-survey" target="_blank" rel="noopener">How Do I Send a Customer Support Survey?</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/customer-feedback/create-and-send-customer-satisfaction-surveys" target="_blank" rel="noopener">Create and Send Customer Satisfaction Surveys</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/service-tools/topics?hubs_content=knowledge.hubspot.com/service-tools&hubs_content-cta=kb-see-more#feedback-surveys" target="_blank" rel="noopener">Feedback Surveys HubSpot Knowledge Base (All Topics)</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- CS Card 3: Client Outreach & Shared Help Desk -->
+        <article class="howto-card">
+          <div class="howto-header" onclick="toggleCard(this)">
+            <div>
+              <span class="howto-kicker">What do I want to do? &bull; Client Outreach &amp; Shared Inbox</span>
+              <h4>"I want to run client outreach, check-ins &amp; project follow-ups in one shared workspace"</h4>
+            </div>
+            <span class="toggle-icon">&minus;</span>
+          </div>
+          <div class="howto-body">
+            <p class="howto-why">
+              <strong>Why &amp; Concept:</strong> Instead of losing client replies in personal student inboxes, <strong>Help Desk</strong> logs every outreach thread, data request, and follow-up as a ticket directly on the client's Company record.
+            </p>
+            <ol class="howto-steps">
+              <li><strong>Connect Shared Inbox (Setup):</strong> Go to <code class="ui-path">Settings &gt; Inbox &amp; Help Desk &gt; Help Desk</code> &rarr; click <strong>Connect a channel &gt; Team Email</strong> (e.g., <code>client-support@...</code>) and set pipeline stages: <em>New Request &rarr; Under Review &rarr; In Progress &rarr; Waiting on Client &rarr; Resolved</em>.</li>
+              <li><strong>Log Outreach or Client Requests:</strong> Open <code class="ui-path">Service &gt; Help Desk</code>, click <strong>Create ticket</strong> (e.g., <em>Alcomy – Post-Project Check-In &amp; Testimonial</em>), assign yourself as <strong>Ticket Owner</strong>, and link the <strong>Company</strong> &amp; <strong>Contact</strong>.</li>
+              <li><strong>Reply &amp; Collaborate Internally:</strong> Send emails directly from the ticket window so the full thread stays in CRM. Use the yellow <strong>Comment (Internal Note)</strong> tab with <code>@Name</code> to coordinate privately with the Operations Director or Paul Godfrey.</li>
+            </ol>
+            <div class="links-strip">
+              <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
+              <ul>
+                <li><span class="badge video">Short Video (~2 min)</span> <a href="https://app-na2.hubspot.com/academy/241871229/shortvideo/8525393?ruid=169081879" target="_blank" rel="noopener">Connect Your Support Channels (Kyle Jepson)</a> — connect email, chat, and routing rules to Help Desk</li>
+                <li><span class="badge video">Academy Lesson</span> <a href="https://academy.hubspot.com/lessons/scaling-support-through-help-desk-and-customer-agent" target="_blank" rel="noopener">Scaling Support Through Help Desk and Customer Agent (Adriti Gulati)</a> — full setup of intake channels, pipelines, SLAs, and views</li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/help-desk/overview-of-the-help-desk-workspace" target="_blank" rel="noopener">Overview of the Help Desk Workspace</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/service-tools/topics?hubs_content=knowledge.hubspot.com/service-tools&hubs_content-cta=kb-see-more#help-desk" target="_blank" rel="noopener">Help Desk HubSpot Knowledge Desk (All Topics)</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- CS Card 4: Service Analytics & Reporting -->
+        <article class="howto-card">
+          <div class="howto-header" onclick="toggleCard(this)">
+            <div>
+              <span class="howto-kicker">What do I want to do? &bull; Satisfaction Metrics &amp; Dashboards</span>
+              <h4>"I want to pull NPS scores, client satisfaction stats &amp; response metrics for Marketing &amp; Leadership"</h4>
+            </div>
+            <span class="toggle-icon">&minus;</span>
+          </div>
+          <div class="howto-body">
+            <p class="howto-why">
+              <strong>Why &amp; Concept:</strong> Turns client feedback and response times into visual charts that prove CSG's impact to Paul Godfrey and show Marketing which client segments give the highest NPS scores.
+            </p>
+            <ol class="howto-steps">
+              <li>Go to <code class="ui-path">Service &gt; Service Analytics</code> and open <strong>Customer Outcomes</strong> (NPS &amp; CSAT trends) or <strong>Response Times</strong>.</li>
+              <li>Filter the date range to the current or past semester, then click <strong>Save report &rarr; Add to existing dashboard</strong> (<code class="ui-path">CSG Executive Leadership Dashboard</code>).</li>
+              <li>To automate monthly updates: open <code class="ui-path">Reporting &gt; Dashboards</code> &rarr; click <strong>Share &gt; Email this dashboard</strong> &rarr; schedule a recurring monthly PDF to Paul Godfrey and team leads.</li>
+            </ol>
+            <div class="links-strip">
+              <div class="links-strip-title">HubSpot Academy Video Guide</div>
+              <ul>
+                <li><span class="badge video">Academy Lesson</span> <a href="https://academy.hubspot.com/lessons/setting-up-service-reports-and-analytics" target="_blank" rel="noopener">Setting up Service Reports and Analytics (Adriti Gulati)</a> — navigating service reports, dashboards, CSAT, and ticket metrics</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- SECONDARY / WEBSITE & SELF-SERVICE TOOLS (5–8) -->
+      <div class="part-block">
+        <div class="part-heading">
+          <h3>Additional Service Hub Tools <span class="blue">(Website, AI &amp; Client Self-Service)</span></h3>
+          <span class="part-tag">Click Any Card to Expand Steps &amp; Links</span>
+        </div>
+
+        <!-- CS Card 5: Knowledge Base -->
+        <article class="howto-card collapsed">
+          <div class="howto-header" onclick="toggleCard(this)">
+            <div>
+              <span class="howto-kicker">What do I want to do? &bull; Knowledge Base</span>
+              <h4>"I want to publish client FAQs or password-protected internal SOPs"</h4>
+            </div>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="howto-body">
+            <p class="howto-why"><strong>Concept:</strong> Hosts public articles explaining CSG's consulting process/NDAs to prospects, plus password-protected internal guides for new student consultants.</p>
+            <ol class="howto-steps">
+              <li>Go to <code class="ui-path">Service &gt; Knowledge Base</code>, customize branding/logo, and connect your domain under <code class="ui-path">Settings &gt; Domains</code>.</li>
+              <li>Create categories (<em>Client Onboarding</em>, <em>CSG Frameworks</em>, <em>Internal SOPs</em>) and click <strong>Create article</strong>.</li>
+              <li>Set <strong>Control audience access</strong> to <em>Public</em> (client FAQs) or <em>Private / Password-protected</em> (internal SOPs) and click <strong>Publish</strong>.</li>
+            </ol>
+            <div class="links-strip">
+              <div class="links-strip-title">HubSpot Academy Video &amp; Knowledge Base Guides</div>
+              <ul>
+                <li><span class="badge video">Academy Lesson</span> <a href="https://academy.hubspot.com/lessons/setting-up-your-knowledge-base-for-success" target="_blank" rel="noopener">Setting up your Knowledge Base for Success (Adriti Gulati)</a> — domains, categories, branding, and reporting</li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/knowledge-base/customize-knowledge-base-settings" target="_blank" rel="noopener">Customize Knowledge Base Settings</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/service-tools/topics?hubs_content=knowledge.hubspot.com/service-tools&hubs_content-cta=kb-see-more#knowledge-base" target="_blank" rel="noopener">Knowledge Base HubSpot Base (All Topics)</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- CS Card 6: Chatflows -->
+        <article class="howto-card collapsed">
+          <div class="howto-header" onclick="toggleCard(this)">
+            <div>
+              <span class="howto-kicker">What do I want to do? &bull; Website Chatflows</span>
+              <h4>"I want a website chatbot that separates Companies, Students &amp; Alumni and books calls"</h4>
+            </div>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="howto-body">
+            <p class="howto-why"><strong>Concept:</strong> A rule-based decision-tree widget on the CSG website that qualifies business leads 24/7 and embeds a Discovery Call booking calendar.</p>
+            <ol class="howto-steps">
+              <li>Go to <code class="ui-path">Service &gt; Chatflows &gt; Create chatflow &gt; Website &gt; Bot</code>.</li>
+              <li>Add quick-reply buttons: <strong>Hire CSG (Project Inquiry)</strong>, <strong>Join CSG (Student)</strong>, and <strong>Alumni / General</strong>.</li>
+              <li>For <em>Hire CSG</em>, capture <code>First/Last Name</code>, <code>Email</code>, and <code>Company Name</code>, then end with the <strong>Book a meeting</strong> action and publish under <strong>Targeting</strong>.</li>
+            </ol>
+            <div class="links-strip">
+              <div class="links-strip-title">HubSpot Academy Video &amp; Knowledge Base Guides</div>
+              <ul>
+                <li><span class="badge video">Short Video (~1.5 min)</span> <a href="https://app-na2.hubspot.com/academy/241871229/shortvideo/1526603?ruid=169081879" target="_blank" rel="noopener">How To Create a Chatbot in HubSpot (Adriti Gulati)</a> — templates, if/then branching, and inbox routing</li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/chatflows/add-a-chatflow-to-your-wordpress-pages" target="_blank" rel="noopener">Add a Chatflow to Your WordPress Pages</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/service-tools/topics?hubs_content=knowledge.hubspot.com/service-tools&hubs_content-cta=kb-see-more#chatflows" target="_blank" rel="noopener">Chatflows HubSpot Knowledge Base (All Topics)</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- CS Card 7: Customer Agent (Breeze AI) -->
+        <article class="howto-card collapsed">
+          <div class="howto-header" onclick="toggleCard(this)">
+            <div>
+              <span class="howto-kicker">What do I want to do? &bull; Breeze AI Customer Agent</span>
+              <h4>"I want an AI assistant to answer routine questions from our Knowledge Base &amp; PDFs"</h4>
+            </div>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="howto-body">
+            <p class="howto-why"><strong>Concept:</strong> Uses HubSpot Breeze AI (requires HubSpot Credits) to answer common prospect or internal SOP questions 24/7 and hand off complex inquiries to a human lead.</p>
+            <ol class="howto-steps">
+              <li>Go to <code class="ui-path">Service &gt; Customer Agent &gt; Get Started</code>, name the bot, and set a professional tone.</li>
+              <li>Under <strong>Data Sources</strong>, connect your published Knowledge Base, CSG website URLs, and approved PDFs (e.g., <em>Capabilities Deck</em>).</li>
+              <li>Set <strong>Handoff</strong> to create a Help Desk ticket for the BD Lead when human help is needed, and review <strong>Unhandled Questions</strong> weekly.</li>
+            </ol>
+            <div class="links-strip">
+              <div class="links-strip-title">HubSpot Academy Videos &amp; Knowledge Base Guides</div>
+              <ul>
+                <li><span class="badge video">Short Video (~2 min)</span> <a href="https://app-na2.hubspot.com/academy/241871229/shortvideo/8488212?ruid=169081879" target="_blank" rel="noopener">Set Up Breeze Customer Agent (Kyle Jepson)</a> — training the AI on your content, brand voice, and escalation rules</li>
+                <li><span class="badge video">Short Video (~2 min)</span> <a href="https://app-na2.hubspot.com/academy/241871229/shortvideo/2639654?ruid=169081879" target="_blank" rel="noopener">What is Customer Agent? (Brenna Zenaty)</a> — how it resolves inquiries across chat, email, and forms</li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/customer-agent/set-up-the-customer-agent" target="_blank" rel="noopener">Set Up the Customer Agent</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/customer-agent/set-up-actions-for-the-customer-agent" target="_blank" rel="noopener">Set Up Actions for the Customer Agent</a></li>
+                <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/service-tools/topics?hubs_content=knowledge.hubspot.com/service-tools&hubs_content-cta=kb-see-more#customer-agent" target="_blank" rel="noopener">Customer Agent HubSpot Knowledge Base (All Topics)</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- CS Card 8: Customer Portal -->
+        <article class="howto-card collapsed">
+          <div class="howto-header" onclick="toggleCard(this)">
+            <div>
+              <span class="howto-kicker">What do I want to do? &bull; Protected Client Portal</span>
+              <h4>"I want to give active client sponsors a secure login portal to track deliverables"</h4>
+            </div>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="howto-body">
+            <p class="howto-why"><strong>Concept:</strong> Gives client CEOs/sponsors a live login view of all open project tickets and deliverable threads while keeping internal notes hidden.</p>
+            <ol class="howto-steps">
+              <li>Go to <code class="ui-path">Settings &gt; Inbox &amp; Help Desk &gt; Customer Portal</code>, connect your domain, and apply CSG branding under <strong>Theme</strong>.</li>
+              <li>Under <strong>General &gt; Ticket Permissions</strong>, allow clients to view all tickets associated with their Company (restricted to client-facing pipelines).</li>
+              <li>Open <code class="ui-path">CRM &gt; Contacts</code> on the client sponsor and click <code class="ui-path">Actions &gt; Send customer portal invitation</code>.</li>
+            </ol>
+            <div class="links-strip">
+              <div class="links-strip-title">HubSpot Academy Video Guide</div>
+              <ul>
+                <li><span class="badge video">Academy Lesson</span> <a href="https://academy.hubspot.com/lessons/setting-up-customer-portal" target="_blank" rel="noopener">Setting up Customer Portal (Adriti Gulati)</a> — domains, authentication, branding, filtering tickets, and connecting Knowledge Base</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Compact End-of-Semester Handover Reminder -->
+      <div class="callout warn">
+        <strong>End-of-Semester Handover Rule (Week 13/14):</strong>
+        (1) Confirm every graduating client has a completed <strong>NPS/Feedback Survey</strong> and pinned final summary note.
+        (2) Reassign the <strong>Service Hub Pro Seat</strong>, <strong>Marketing Core Seats</strong>, and <strong>Sales Seats</strong> from graduating seniors to incoming leads (downgrade seniors to free View-Only access so all history stays intact).
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="editorial-footer">
+    Cougar Strategy Group (CSG) &bull; HubSpot Quick-Start Playbook &bull; Built for Incoming Student Teams
+  </footer>
+
+  <script>
+    function navigateTo(sectionId) {
+      const validSections = ['home', 'marketing', 'sales', 'service'];
+      const target = validSections.includes(sectionId) ? sectionId : 'home';
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.toggle('active', sec.id === target));
+      document.querySelectorAll('.step-link').forEach(link => link.classList.toggle('active', link.getAttribute('data-nav') === target));
+      if (window.location.hash !== '#' + target) history.replaceState(null, '', '#' + target);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) navigateTo(hash);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      navigateTo(window.location.hash.replace('#', '') || 'home');
+    });
+
+    function toggleCard(headerEl) {
+      const card = headerEl.closest('.howto-card');
+      card.classList.toggle('collapsed');
+      headerEl.querySelector('.toggle-icon').textContent = card.classList.contains('collapsed') ? '+' : '\u2212';
+    }
+
+    function copySimpleCard(hubName) {
+      const snippet = `<article class="howto-card">
+  <div class="howto-header" onclick="toggleCard(this)">
+    <div>
+      <span class="howto-kicker">What do I want to do?</span>
+      <h4>"[Write specific goal here, e.g., I want to ...]"</h4>
+    </div>
+    <span class="toggle-icon">&minus;</span>
+  </div>
+  <div class="howto-body">
+    <p class="howto-why"><strong>Concept:</strong> [1 short sentence explaining why this matters for CSG.]</p>
+    <ol class="howto-steps">
+      <li>Go to <code class="ui-path">[Menu &gt; Submenu]</code> and click <strong>[Button]</strong>.</li>
+      <li>[Enter required fields / configure settings].</li>
+      <li>[Publish / launch / check results].</li>
+    </ol>
+    <div class="links-strip">
+      <div class="links-strip-title">Helpful Guides &amp; Academy Links</div>
+      <ul>
+        <li><span class="badge">Knowledge Base</span> <a href="https://knowledge.hubspot.com/" target="_blank" rel="noopener">[Guide Title]</a></li>
+        <li><span class="badge video">Academy</span> <a href="https://academy.hubspot.com/" target="_blank" rel="noopener">[Video / Lesson Title]</a></li>
+      </ul>
+    </div>
+  </div>
+</article>`;
+      navigator.clipboard.writeText(snippet).then(() => {
+        const msg = document.getElementById(`copy-msg-${hubName}`);
+        if (msg) msg.textContent = 'Copied to clipboard!';
+      });
+    }
+  </script>
+</body>
+</html>
